@@ -1,0 +1,1053 @@
+Archive member included because of file (symbol)
+
+./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                              perform_tasks.o (Balloon_get_height)
+./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                              ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o) (HAL_reset)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+                              ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o) (__mulsi3)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+                              perform_tasks.o (__divmodhi4)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+                              ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o) (__divmodsi4)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o) (__negsi2)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+                              /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o (exit)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+                              RP6Lib/RP6control/RP6ControlLib.o (__do_copy_data)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o) (__muluhisi3)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o) (__udivmodhi4)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o) (__udivmodsi4)
+/usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o) (__umulhisi3)
+/usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+                              RP6Lib/RP6control/RP6ControlLib.o (itoa)
+/usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+                              /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o) (strrev)
+
+Allocating common symbols
+Common symbol       size              file
+
+timer               0x2               main.o
+uart_status         0x1               RP6Lib/RP6common/RP6uart.o
+controlStatus       0x1               RP6Lib/RP6control/RP6ControlLib.o
+lcd_tmp_buffer      0x11              RP6Lib/RP6control/RP6ControlLib.o
+stopwatches         0x11              RP6Lib/RP6control/RP6ControlLib.o
+_message            0x3               main.o
+externalPort        0x1               RP6Lib/RP6control/RP6ControlLib.o
+delay_timer         0x1               RP6Lib/RP6control/RP6ControlLib.o
+_heightChangeValve  0x2               ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ms_timer            0x1               RP6Lib/RP6control/RP6ControlLib.o
+_heightChangeBurner
+                    0x2               ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+uart_receive_buffer
+                    0x21              RP6Lib/RP6common/RP6uart.o
+sound_timer         0x2               RP6Lib/RP6control/RP6ControlLib.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+user_signatures  0x00850000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+LOAD main.o
+LOAD RP6Lib/RP6control/RP6ControlLib.o
+LOAD RP6Lib/RP6common/RP6uart.o
+LOAD initialize.o
+LOAD message.o
+LOAD perform_tasks.o
+LOAD /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a
+LOAD ./LPABallonLib/libLPA_Ballon.a
+START GROUP
+LOAD /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a
+LOAD /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libm.a
+LOAD /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a
+END GROUP
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x1420
+ *(.vectors)
+ .vectors       0x00000000       0x54 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+ .progmem.data  0x00000054       0x38 initialize.o
+                0x0000008c                . = ALIGN (0x2)
+                0x0000008c                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x0000008c        0x0 linker stubs
+ *(.trampolines*)
+                0x0000008c                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x0000008c                __ctors_start = .
+ *(.ctors)
+                0x0000008c                __ctors_end = .
+                0x0000008c                __dtors_start = .
+ *(.dtors)
+                0x0000008c                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x0000008c        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+                0x0000008c                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x0000008c        0xc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000098       0x16 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+                0x00000098                __do_copy_data
+ .init4         0x000000ae       0x10 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+                0x000000ae                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000be        0x8 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+ *(.init9)
+ *(.text)
+ .text          0x000000c6        0x4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+                0x000000c6                __vector_12
+                0x000000c6                __bad_interrupt
+                0x000000c6                __vector_6
+                0x000000c6                __vector_11
+                0x000000c6                __vector_17
+                0x000000c6                __vector_19
+                0x000000c6                __vector_5
+                0x000000c6                __vector_4
+                0x000000c6                __vector_9
+                0x000000c6                __vector_15
+                0x000000c6                __vector_8
+                0x000000c6                __vector_14
+                0x000000c6                __vector_16
+                0x000000c6                __vector_18
+                0x000000c6                __vector_20
+ .text          0x000000ca       0x2e main.o
+                0x000000ca                ReadKeys
+ .text          0x000000f8      0x81e RP6Lib/RP6control/RP6ControlLib.o
+                0x000000f8                INT0_event_DUMMY
+                0x000000fa                INT1_event_DUMMY
+                0x000000fc                INT2_event_DUMMY
+                0x000000fe                INT0_setEventHandler
+                0x00000108                __vector_1
+                0x00000156                INT1_setEventHandler
+                0x00000160                __vector_2
+                0x000001ae                INT2_setEventHandler
+                0x000001b8                __vector_3
+                0x00000206                readADC
+                0x00000224                writeSPI
+                0x0000022c                readSPI
+                0x00000236                readWordSPI
+                0x00000256                writeWordSPI
+                0x00000268                writeBufferSPI
+                0x00000280                readBufferSPI
+                0x0000029c                SPI_EEPROM_readByte
+                0x000002bc                SPI_EEPROM_readBytes
+                0x000002fe                SPI_EEPROM_enableWrite
+                0x0000030a                SPI_EEPROM_disableWrite
+                0x00000316                SPI_EEPROM_getStatus
+                0x00000326                SPI_EEPROM_writeByte
+                0x0000035a                SPI_EEPROM_writeBytes
+                0x0000039a                outputExt
+                0x000003ac                setLEDs
+                0x000003be                getPressedKeyNumber
+                0x00000426                checkPressedKeyEvent
+                0x0000044a                checkReleasedKeyEvent
+                0x00000472                __vector_10
+                0x000005c4                beep
+                0x000005e0                setBeeperPitch
+                0x000005fe                sleep
+                0x00000614                mSleep
+                0x0000062e                dischargePeakDetector
+                0x0000063e                getMicrophonePeak
+                0x0000066a                delayCycles
+                0x00000674                setLCDD
+                0x00000696                write4BitLCDData
+                0x000006b2                writeLCDCommand
+                0x000006c0                setCursorPosLCD
+                0x000006ce                initLCD
+                0x0000074c                clearLCD
+                0x0000075a                writeCharLCD
+                0x00000768                writeNStringLCD_P
+                0x00000786                _showScreenLCD_P
+                0x000007be                writeStringLCD
+                0x000007d6                writeIntegerLCD
+                0x000007ea                writeStringLengthLCD
+                0x00000824                writeIntegerLengthLCD
+                0x000008a2                clearPosLCD
+                0x000008bc                initRP6Control
+ .text          0x00000916      0x256 RP6Lib/RP6common/RP6uart.o
+                0x00000916                writeChar
+                0x0000091e                writeString
+                0x00000936                writeNStringP
+                0x00000954                writeStringLength
+                0x0000098e                writeInteger
+                0x000009ca                writeIntegerLength
+                0x00000a48                __vector_13
+                0x00000ab6                readChar
+                0x00000af2                readChars
+                0x00000b40                getBufferLength
+                0x00000b4c                clearReceptionBuffer
+ .text          0x00000b6c       0x38 initialize.o
+                0x00000b6c                Initialize
+ .text          0x00000ba4      0x18a message.o
+                0x00000ba4                Read
+                0x00000ce2                Write
+ .text          0x00000d2e      0x1ba perform_tasks.o
+                0x00000d2e                performTasks
+                0x00000dc0                cleanMessage
+                0x00000dd0                setHeightRp6
+                0x00000dee                maintainHeight
+                0x00000e22                showSimParams
+ .text          0x00000ee8      0x2ca ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                0x00000ee8                Balloon_get_height
+                0x00000f08                Balloon_get_burnerstate
+                0x00000f0e                Balloon_get_valvestate
+                0x00000f14                __vector_7
+                0x000010b4                Balloon_set_valve
+                0x000010dc                Balloon_set_burner
+                0x00001162                Balloon_reset
+ .text          0x000011b2       0xb0 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                0x000011b2                HAL_reset
+                0x000011d8                HAL_get_TOGGLE
+                0x000011ee                HAL_get_BUTTON1
+                0x00001204                HAL_get_BUTTON2
+                0x0000121a                HAL_clear_LEDS
+                0x00001226                HAL_set_LED_RED
+                0x00001232                HAL_set_LED_GREEN
+                0x0000123e                HAL_set_RGB_RED
+                0x0000124a                HAL_set_RGB_GREEN
+                0x00001256                HAL_set_RGB_BLUE
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+ .text          0x00001262        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+                0x00001262                . = ALIGN (0x2)
+ *(.text.*)
+ .text.startup  0x00001262       0x32 main.o
+                0x00001262                main
+ .text.libgcc.mul
+                0x00001294       0x20 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+                0x00001294                __mulsi3
+ .text.libgcc.div
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc   0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc.prologue
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc.builtins
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc.fmul
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc.fixed
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .text.libgcc.mul
+                0x000012b4        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.div
+                0x000012b4       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+                0x000012b4                __divmodhi4
+                0x000012b4                _div
+ .text.libgcc   0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.prologue
+                0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.builtins
+                0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.fmul
+                0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.fixed
+                0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .text.libgcc.mul
+                0x000012dc        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.div
+                0x000012dc       0x2e /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+                0x000012dc                __divmodsi4
+ .text.libgcc   0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.prologue
+                0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.builtins
+                0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.fmul
+                0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.fixed
+                0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .text.libgcc.mul
+                0x0000130a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.div
+                0x0000130a       0x10 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+                0x0000130a                __negsi2
+ .text.libgcc   0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.prologue
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.builtins
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.fmul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.fixed
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .text.libgcc.mul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.div
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc   0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.prologue
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.builtins
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.fmul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.fixed
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .text.libgcc.mul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc   0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.div
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc   0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.prologue
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.builtins
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.fmul
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.fixed
+                0x0000131a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .text.libgcc.mul
+                0x0000131a       0x16 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+                0x0000131a                __muluhisi3
+ .text.libgcc.div
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc   0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc.prologue
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc.builtins
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc.fmul
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc.fixed
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .text.libgcc.mul
+                0x00001330        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.div
+                0x00001330       0x28 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+                0x00001330                __udivmodhi4
+ .text.libgcc   0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.prologue
+                0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.builtins
+                0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fmul
+                0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.fixed
+                0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .text.libgcc.mul
+                0x00001358        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.div
+                0x00001358       0x44 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+                0x00001358                __udivmodsi4
+ .text.libgcc   0x0000139c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.prologue
+                0x0000139c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.builtins
+                0x0000139c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fmul
+                0x0000139c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.fixed
+                0x0000139c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .text.libgcc.mul
+                0x0000139c       0x1e /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+                0x0000139c                __umulhisi3
+ .text.libgcc.div
+                0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc   0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.prologue
+                0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.builtins
+                0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.fmul
+                0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.libgcc.fixed
+                0x000013ba        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .text.avr-libc
+                0x000013ba       0x42 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+                0x000013ba                itoa
+ .text.avr-libc
+                0x000013fc       0x20 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+                0x000013fc                strrev
+                0x0000141c                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x0000141c        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+                0x0000141c                exit
+                0x0000141c                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x0000141c        0x4 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ *(.fini0)
+                0x00001420                _etext = .
+
+.data           0x00800060       0x20 load address 0x00001420
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+ .data          0x00800060        0x0 main.o
+ .data          0x00800060        0x6 RP6Lib/RP6control/RP6ControlLib.o
+ .data          0x00800066        0x0 RP6Lib/RP6common/RP6uart.o
+ .data          0x00800066        0x0 initialize.o
+ .data          0x00800066        0x0 message.o
+ .data          0x00800066        0x2 perform_tasks.o
+                0x00800066                buffer
+ .data          0x00800068        0x2 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                0x00800068                drukknop1
+                0x00800069                drukknop2
+ .data          0x0080006a        0x0 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+ .data          0x0080006a        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ .rodata.str1.1
+                0x0080006a       0x16 perform_tasks.o
+ *(.gnu.linkonce.d*)
+                0x00800080                . = ALIGN (0x2)
+                0x00800080                _edata = .
+                0x00800080                PROVIDE (__data_end, .)
+
+.bss            0x00800080       0x6b
+                0x00800080                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800080        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+ .bss           0x00800080        0x0 main.o
+ .bss           0x00800080        0x2 RP6Lib/RP6control/RP6ControlLib.o
+ .bss           0x00800082        0x6 RP6Lib/RP6common/RP6uart.o
+                0x00800082                write_size
+                0x00800083                read_size
+                0x00800084                write_pos
+                0x00800085                read_pos
+ .bss           0x00800088        0x0 initialize.o
+ .bss           0x00800088        0x0 message.o
+ .bss           0x00800088        0x4 perform_tasks.o
+                0x00800088                desiredHeight
+                0x0080008a                pcInCharge
+ .bss           0x0080008c        0xc ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                0x0080008c                _height
+                0x00800090                _burnerState
+                0x00800091                _valveState
+                0x00800092                _turnofftimerS
+                0x00800094                _turnofftimer
+                0x00800096                _turnontimer
+ .bss           0x00800098        0x0 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+ .bss           0x00800098        0x0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800098        0x5 main.o
+                0x00800098                timer
+                0x0080009a                _message
+ COMMON         0x0080009d       0x28 RP6Lib/RP6control/RP6ControlLib.o
+                0x0080009d                controlStatus
+                0x0080009e                lcd_tmp_buffer
+                0x008000af                stopwatches
+                0x008000c0                externalPort
+                0x008000c1                delay_timer
+                0x008000c2                ms_timer
+                0x008000c3                sound_timer
+ COMMON         0x008000c5       0x22 RP6Lib/RP6common/RP6uart.o
+                0x008000c5                uart_status
+                0x008000c6                uart_receive_buffer
+ COMMON         0x008000e7        0x4 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                0x008000e7                _heightChangeValve
+                0x008000e9                _heightChangeBurner
+                0x008000eb                PROVIDE (__bss_end, .)
+                0x00001420                __data_load_start = LOADADDR (.data)
+                0x00001440                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008000eb        0x0
+                0x008000eb                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008000eb                PROVIDE (__noinit_end, .)
+                0x008000eb                _end = .
+                0x008000eb                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.user_signatures
+ *(.user_signatures*)
+
+.stab           0x00000000      0x954
+ *(.stab)
+ .stab          0x00000000      0x6cc /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+ .stab          0x000006cc      0x1b0 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+                                0x1bc (size before relaxing)
+ .stab          0x0000087c       0xd8 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+                                 0xe4 (size before relaxing)
+
+.stabstr        0x00000000       0xb4
+ *(.stabstr)
+ .stabstr       0x00000000       0xb4 /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x11
+ *(.comment)
+ .comment       0x00000000       0x11 main.o
+                                 0x12 (size before relaxing)
+ .comment       0x00000000       0x12 RP6Lib/RP6control/RP6ControlLib.o
+ .comment       0x00000000       0x12 RP6Lib/RP6common/RP6uart.o
+ .comment       0x00000000       0x12 initialize.o
+ .comment       0x00000000       0x12 message.o
+ .comment       0x00000000       0x12 perform_tasks.o
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x108
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 main.o
+ .debug_aranges
+                0x00000028       0x20 RP6Lib/RP6control/RP6ControlLib.o
+ .debug_aranges
+                0x00000048       0x20 RP6Lib/RP6common/RP6uart.o
+ .debug_aranges
+                0x00000068       0x20 initialize.o
+ .debug_aranges
+                0x00000088       0x20 message.o
+ .debug_aranges
+                0x000000a8       0x20 perform_tasks.o
+ .debug_aranges
+                0x000000c8       0x20 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_aranges
+                0x000000e8       0x20 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+
+.debug_pubnames
+                0x00000000      0x233
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x15c ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_pubnames
+                0x0000015c       0xd7 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+
+.debug_info     0x00000000     0x28aa
+ *(.debug_info)
+ .debug_info    0x00000000      0x2ef main.o
+ .debug_info    0x000002ef     0x131d RP6Lib/RP6control/RP6ControlLib.o
+ .debug_info    0x0000160c      0x4aa RP6Lib/RP6common/RP6uart.o
+ .debug_info    0x00001ab6      0x1dc initialize.o
+ .debug_info    0x00001c92      0x2d1 message.o
+ .debug_info    0x00001f63      0x494 perform_tasks.o
+ .debug_info    0x000023f7      0x233 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_info    0x0000262a      0x280 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0xcc2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x153 main.o
+ .debug_abbrev  0x00000153      0x3fe RP6Lib/RP6control/RP6ControlLib.o
+ .debug_abbrev  0x00000551      0x1ea RP6Lib/RP6common/RP6uart.o
+ .debug_abbrev  0x0000073b       0xff initialize.o
+ .debug_abbrev  0x0000083a      0x153 message.o
+ .debug_abbrev  0x0000098d      0x17e perform_tasks.o
+ .debug_abbrev  0x00000b0b       0xcf ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_abbrev  0x00000bda       0xe8 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+
+.debug_line     0x00000000      0xaec
+ *(.debug_line)
+ .debug_line    0x00000000       0xec main.o
+ .debug_line    0x000000ec      0x288 RP6Lib/RP6control/RP6ControlLib.o
+ .debug_line    0x00000374      0x101 RP6Lib/RP6common/RP6uart.o
+ .debug_line    0x00000475       0x87 initialize.o
+ .debug_line    0x000004fc       0xdb message.o
+ .debug_line    0x000005d7      0x108 perform_tasks.o
+ .debug_line    0x000006df      0x25e ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_line    0x0000093d      0x1af ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+
+.debug_frame    0x00000000      0x99c
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x34 main.o
+ .debug_frame   0x00000034      0x5a0 RP6Lib/RP6control/RP6ControlLib.o
+ .debug_frame   0x000005d4      0x168 RP6Lib/RP6common/RP6uart.o
+ .debug_frame   0x0000073c       0x24 initialize.o
+ .debug_frame   0x00000760       0x9c message.o
+ .debug_frame   0x000007fc       0x70 perform_tasks.o
+ .debug_frame   0x0000086c       0x80 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+ .debug_frame   0x000008ec       0xb0 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+
+.debug_str      0x00000000      0xa60
+ *(.debug_str)
+ .debug_str     0x00000000      0x184 main.o
+                                0x1c3 (size before relaxing)
+ .debug_str     0x00000184      0x4e8 RP6Lib/RP6control/RP6ControlLib.o
+                                0x64b (size before relaxing)
+ .debug_str     0x0000066c       0xfc RP6Lib/RP6common/RP6uart.o
+                                0x27e (size before relaxing)
+ .debug_str     0x00000768       0x1b initialize.o
+                                0x171 (size before relaxing)
+ .debug_str     0x00000783       0x65 message.o
+                                0x1d3 (size before relaxing)
+ .debug_str     0x000007e8       0xcc perform_tasks.o
+                                0x2e1 (size before relaxing)
+ .debug_str     0x000008b4       0xff ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                0x21a (size before relaxing)
+ .debug_str     0x000009b3       0xad ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                0x179 (size before relaxing)
+
+.debug_loc      0x00000000     0x185c
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x13 main.o
+ .debug_loc     0x00000013      0xfb3 RP6Lib/RP6control/RP6ControlLib.o
+ .debug_loc     0x00000fc6      0x4c8 RP6Lib/RP6common/RP6uart.o
+ .debug_loc     0x0000148e      0x20d message.o
+ .debug_loc     0x0000169b      0x185 perform_tasks.o
+ .debug_loc     0x00001820       0x3c ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_pubtypes
+ *(.debug_pubtypes)
+
+.debug_ranges   0x00000000       0x18
+ *(.debug_ranges)
+ .debug_ranges  0x00000000       0x18 main.o
+
+.debug_macro
+ *(.debug_macro)
+OUTPUT(main.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+Balloon_get_burnerstate                           ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+Balloon_get_height                                ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+Balloon_get_valvestate                            ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+Balloon_reset                                     ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  initialize.o
+Balloon_set_burner                                ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+Balloon_set_valve                                 ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+HAL_clear_LEDS                                    ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+HAL_get_BUTTON1                                   ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+HAL_get_BUTTON2                                   ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+HAL_get_TOGGLE                                    ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+HAL_reset                                         ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+HAL_set_LED_GREEN                                 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+HAL_set_LED_RED                                   ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+HAL_set_RGB_BLUE                                  ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+HAL_set_RGB_GREEN                                 ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+HAL_set_RGB_RED                                   ./LPABallonLib/libLPA_Ballon.a(LPA_HAL.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+INT0_event_DUMMY                                  RP6Lib/RP6control/RP6ControlLib.o
+INT0_setEventHandler                              RP6Lib/RP6control/RP6ControlLib.o
+INT1_event_DUMMY                                  RP6Lib/RP6control/RP6ControlLib.o
+INT1_setEventHandler                              RP6Lib/RP6control/RP6ControlLib.o
+INT2_event_DUMMY                                  RP6Lib/RP6control/RP6ControlLib.o
+INT2_setEventHandler                              RP6Lib/RP6control/RP6ControlLib.o
+Initialize                                        initialize.o
+                                                  main.o
+Read                                              message.o
+                                                  main.o
+ReadKeys                                          main.o
+SPI_EEPROM_disableWrite                           RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_enableWrite                            RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_getStatus                              RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_readByte                               RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_readBytes                              RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_writeByte                              RP6Lib/RP6control/RP6ControlLib.o
+SPI_EEPROM_writeBytes                             RP6Lib/RP6control/RP6ControlLib.o
+Write                                             message.o
+                                                  perform_tasks.o
+__bad_interrupt                                   /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__bss_end                                         /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+__bss_start                                       /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+__data_end                                        /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+__data_load_start                                 /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+__data_start                                      /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+__divmodhi4                                       /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+                                                  perform_tasks.o
+__divmodsi4                                       /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+__do_clear_bss                                    /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_clear_bss.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+                                                  initialize.o
+                                                  RP6Lib/RP6common/RP6uart.o
+                                                  RP6Lib/RP6control/RP6ControlLib.o
+                                                  main.o
+__do_copy_data                                    /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_copy_data.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  perform_tasks.o
+                                                  RP6Lib/RP6control/RP6ControlLib.o
+__heap_end                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__init                                            /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__mulsi3                                          /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+                                                  ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+__muluhisi3                                       /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+                                                  /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_mulsi3.o)
+__negsi2                                          /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_negsi2.o)
+                                                  /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+__stack                                           /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__udivmodhi4                                      /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodhi4.o)
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+                                                  /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+__udivmodsi4                                      /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_udivmodsi4.o)
+                                                  /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodsi4.o)
+__umulhisi3                                       /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_umulhisi3.o)
+                                                  /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_muluhisi3.o)
+__vector_1                                        RP6Lib/RP6control/RP6ControlLib.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_10                                       RP6Lib/RP6control/RP6ControlLib.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_11                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_12                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_13                                       RP6Lib/RP6common/RP6uart.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_14                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_15                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_16                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_17                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_18                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_19                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_2                                        RP6Lib/RP6control/RP6ControlLib.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_20                                       /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_3                                        RP6Lib/RP6control/RP6ControlLib.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_4                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_5                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_6                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_7                                        ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_8                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_9                                        /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vector_default                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+__vectors                                         /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+_burnerState                                      ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_div                                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_divmodhi4.o)
+_exit                                             /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+_height                                           ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_heightChangeBurner                               ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_heightChangeValve                                ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_message                                          main.o
+_showScreenLCD_P                                  RP6Lib/RP6control/RP6ControlLib.o
+                                                  initialize.o
+_turnofftimer                                     ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_turnofftimerS                                    ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_turnontimer                                      ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+_valveState                                       ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+beep                                              RP6Lib/RP6control/RP6ControlLib.o
+buffer                                            perform_tasks.o
+checkPressedKeyEvent                              RP6Lib/RP6control/RP6ControlLib.o
+checkReleasedKeyEvent                             RP6Lib/RP6control/RP6ControlLib.o
+cleanMessage                                      perform_tasks.o
+                                                  main.o
+clearLCD                                          RP6Lib/RP6control/RP6ControlLib.o
+clearPosLCD                                       RP6Lib/RP6control/RP6ControlLib.o
+                                                  perform_tasks.o
+clearReceptionBuffer                              RP6Lib/RP6common/RP6uart.o
+                                                  main.o
+controlStatus                                     RP6Lib/RP6control/RP6ControlLib.o
+delayCycles                                       RP6Lib/RP6control/RP6ControlLib.o
+delay_timer                                       RP6Lib/RP6control/RP6ControlLib.o
+desiredHeight                                     perform_tasks.o
+dischargePeakDetector                             RP6Lib/RP6control/RP6ControlLib.o
+drukknop1                                         ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+drukknop2                                         ./LPABallonLib/libLPA_Ballon.a(LPA_Lib_ballon.o)
+exit                                              /usr/lib/gcc/avr/4.8.2/avr5/libgcc.a(_exit.o)
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+externalPort                                      RP6Lib/RP6control/RP6ControlLib.o
+getBufferLength                                   RP6Lib/RP6common/RP6uart.o
+                                                  message.o
+getMicrophonePeak                                 RP6Lib/RP6control/RP6ControlLib.o
+getPressedKeyNumber                               RP6Lib/RP6control/RP6ControlLib.o
+                                                  main.o
+initLCD                                           RP6Lib/RP6control/RP6ControlLib.o
+                                                  initialize.o
+initRP6Control                                    RP6Lib/RP6control/RP6ControlLib.o
+                                                  initialize.o
+itoa                                              /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+                                                  RP6Lib/RP6common/RP6uart.o
+                                                  RP6Lib/RP6control/RP6ControlLib.o
+lcd_tmp_buffer                                    RP6Lib/RP6control/RP6ControlLib.o
+mSleep                                            RP6Lib/RP6control/RP6ControlLib.o
+                                                  initialize.o
+main                                              main.o
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/crtm32.o
+maintainHeight                                    perform_tasks.o
+                                                  main.o
+ms_timer                                          RP6Lib/RP6control/RP6ControlLib.o
+outputExt                                         RP6Lib/RP6control/RP6ControlLib.o
+pcInCharge                                        perform_tasks.o
+performTasks                                      perform_tasks.o
+                                                  main.o
+readADC                                           RP6Lib/RP6control/RP6ControlLib.o
+readBufferSPI                                     RP6Lib/RP6control/RP6ControlLib.o
+readChar                                          RP6Lib/RP6common/RP6uart.o
+                                                  message.o
+readChars                                         RP6Lib/RP6common/RP6uart.o
+readSPI                                           RP6Lib/RP6control/RP6ControlLib.o
+readWordSPI                                       RP6Lib/RP6control/RP6ControlLib.o
+read_pos                                          RP6Lib/RP6common/RP6uart.o
+read_size                                         RP6Lib/RP6common/RP6uart.o
+setBeeperPitch                                    RP6Lib/RP6control/RP6ControlLib.o
+setCursorPosLCD                                   RP6Lib/RP6control/RP6ControlLib.o
+                                                  perform_tasks.o
+setHeightRp6                                      perform_tasks.o
+                                                  main.o
+setLCDD                                           RP6Lib/RP6control/RP6ControlLib.o
+setLEDs                                           RP6Lib/RP6control/RP6ControlLib.o
+                                                  perform_tasks.o
+                                                  initialize.o
+showSimParams                                     perform_tasks.o
+                                                  main.o
+sleep                                             RP6Lib/RP6control/RP6ControlLib.o
+sound_timer                                       RP6Lib/RP6control/RP6ControlLib.o
+stopwatches                                       RP6Lib/RP6control/RP6ControlLib.o
+strrev                                            /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(strrev.o)
+                                                  /usr/lib/gcc/avr/4.8.2/../../../avr/lib/avr5/libc.a(itoa.o)
+timer                                             perform_tasks.o
+                                                  initialize.o
+                                                  RP6Lib/RP6control/RP6ControlLib.o
+                                                  main.o
+uart_receive_buffer                               RP6Lib/RP6common/RP6uart.o
+uart_status                                       RP6Lib/RP6common/RP6uart.o
+write4BitLCDData                                  RP6Lib/RP6control/RP6ControlLib.o
+writeBufferSPI                                    RP6Lib/RP6control/RP6ControlLib.o
+writeChar                                         RP6Lib/RP6common/RP6uart.o
+                                                  message.o
+writeCharLCD                                      RP6Lib/RP6control/RP6ControlLib.o
+writeInteger                                      RP6Lib/RP6common/RP6uart.o
+                                                  message.o
+writeIntegerLCD                                   RP6Lib/RP6control/RP6ControlLib.o
+                                                  perform_tasks.o
+writeIntegerLength                                RP6Lib/RP6common/RP6uart.o
+writeIntegerLengthLCD                             RP6Lib/RP6control/RP6ControlLib.o
+writeLCDCommand                                   RP6Lib/RP6control/RP6ControlLib.o
+writeNStringLCD_P                                 RP6Lib/RP6control/RP6ControlLib.o
+writeNStringP                                     RP6Lib/RP6common/RP6uart.o
+writeSPI                                          RP6Lib/RP6control/RP6ControlLib.o
+writeString                                       RP6Lib/RP6common/RP6uart.o
+writeStringLCD                                    RP6Lib/RP6control/RP6ControlLib.o
+                                                  perform_tasks.o
+writeStringLength                                 RP6Lib/RP6common/RP6uart.o
+writeStringLengthLCD                              RP6Lib/RP6control/RP6ControlLib.o
+writeWordSPI                                      RP6Lib/RP6control/RP6ControlLib.o
+write_pos                                         RP6Lib/RP6common/RP6uart.o
+write_size                                        RP6Lib/RP6common/RP6uart.o

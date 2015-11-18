@@ -1,0 +1,7 @@
+Create a new .c file
+In terminal use:
+make "fileName"  (creates executable file)
+./"fileName"     (runs exectuable file)
+
+
+

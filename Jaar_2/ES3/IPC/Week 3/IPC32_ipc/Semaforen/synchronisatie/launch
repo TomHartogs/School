@@ -1,0 +1,18 @@
+#!/bin/bash
+
+clear
+
+echo "launching programms"
+
+gnome-terminal -e ./initializeSem &
+
+sleep 1s
+
+./program 1 &
+
+./program 2 &
+
+./program 3 &
+
+./program 4
+

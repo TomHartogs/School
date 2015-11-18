@@ -1,0 +1,560 @@
+   1               		.file	"perform_tasks.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               	.global	performTasks
+  12               	performTasks:
+  13               	.LFB8:
+  14               		.file 1 "perform_tasks.c"
+   1:perform_tasks.c **** #include "perform_tasks.h"
+   2:perform_tasks.c **** 
+   3:perform_tasks.c **** int pcInCharge = 0;
+   4:perform_tasks.c **** int desiredHeight = 0;
+   5:perform_tasks.c **** int buffer = 2;
+   6:perform_tasks.c **** 
+   7:perform_tasks.c **** void performTasks(MESSAGE* _message)
+   8:perform_tasks.c **** {	
+  15               		.loc 1 8 0
+  16               		.cfi_startproc
+  17               	.LVL0:
+  18 0000 CF93      		push r28
+  19               	.LCFI0:
+  20               		.cfi_def_cfa_offset 3
+  21               		.cfi_offset 28, -2
+  22 0002 DF93      		push r29
+  23               	.LCFI1:
+  24               		.cfi_def_cfa_offset 4
+  25               		.cfi_offset 29, -3
+  26               	/* prologue: function */
+  27               	/* frame size = 0 */
+  28               	/* stack size = 2 */
+  29               	.L__stack_usage = 2
+  30 0004 EC01      		movw r28,r24
+   9:perform_tasks.c **** 	switch (_message->action) 
+  31               		.loc 1 9 0
+  32 0006 8881      		ld r24,Y
+  33               	.LVL1:
+  34 0008 8233      		cpi r24,lo8(50)
+  35 000a 01F0      		breq .L3
+  36 000c 00F4      		brsh .L4
+  37 000e 8133      		cpi r24,lo8(49)
+  38 0010 01F4      		brne .L1
+  10:perform_tasks.c **** 	{
+  11:perform_tasks.c **** 		case GET_HEIGHT:
+  12:perform_tasks.c **** 			_message->data = Balloon_get_height();
+  39               		.loc 1 12 0
+  40 0012 0E94 0000 		call Balloon_get_height
+  41               	.LVL2:
+  42 0016 9A83      		std Y+2,r25
+  43 0018 8983      		std Y+1,r24
+  13:perform_tasks.c **** 			Write(*_message);
+  44               		.loc 1 13 0
+  45 001a 6881      		ld  r22,Y
+  46 001c 7981      		ldd r23,Y+1
+  47 001e 8A81      		ldd r24,Y+2
+  48               	/* epilogue start */
+  14:perform_tasks.c **** 			break;
+  15:perform_tasks.c **** 		case SET_HEIGHT:
+  16:perform_tasks.c **** 			if(pcInCharge)
+  17:perform_tasks.c **** 			{
+  18:perform_tasks.c **** 				if(_message->data > 400)
+  19:perform_tasks.c **** 					desiredHeight = 40;
+  20:perform_tasks.c **** 				else if(_message->data < 0)
+  21:perform_tasks.c **** 					desiredHeight = 0;
+  22:perform_tasks.c **** 				else
+  23:perform_tasks.c **** 					desiredHeight = _message->data/10;
+  24:perform_tasks.c **** 			}
+  25:perform_tasks.c **** 			break;
+  26:perform_tasks.c **** 		case RP6_IN_CHARGE:
+  27:perform_tasks.c **** 			pcInCharge = 0;
+  28:perform_tasks.c **** 			break;
+  29:perform_tasks.c **** 		case PC_IN_CHARGE:
+  30:perform_tasks.c **** 			pcInCharge = 1;
+  31:perform_tasks.c **** 			break;
+  32:perform_tasks.c **** 		default:
+  33:perform_tasks.c **** 			break;
+  34:perform_tasks.c **** 	}
+  35:perform_tasks.c **** }
+  49               		.loc 1 35 0
+  50 0020 DF91      		pop r29
+  51 0022 CF91      		pop r28
+  52               	.LVL3:
+  13:perform_tasks.c **** 			Write(*_message);
+  53               		.loc 1 13 0
+  54 0024 0C94 0000 		jmp Write
+  55               	.LVL4:
+  56               	.L4:
+   9:perform_tasks.c **** 	switch (_message->action) 
+  57               		.loc 1 9 0
+  58 0028 8333      		cpi r24,lo8(51)
+  59 002a 01F0      		breq .L6
+  60 002c 8433      		cpi r24,lo8(52)
+  61 002e 01F4      		brne .L1
+  30:perform_tasks.c **** 			pcInCharge = 1;
+  62               		.loc 1 30 0
+  63 0030 81E0      		ldi r24,lo8(1)
+  64 0032 90E0      		ldi r25,0
+  65 0034 9093 0000 		sts pcInCharge+1,r25
+  66 0038 8093 0000 		sts pcInCharge,r24
+  31:perform_tasks.c **** 			break;
+  67               		.loc 1 31 0
+  68 003c 00C0      		rjmp .L1
+  69               	.L3:
+  16:perform_tasks.c **** 			if(pcInCharge)
+  70               		.loc 1 16 0
+  71 003e 8091 0000 		lds r24,pcInCharge
+  72 0042 9091 0000 		lds r25,pcInCharge+1
+  73 0046 892B      		or r24,r25
+  74 0048 01F0      		breq .L1
+  18:perform_tasks.c **** 				if(_message->data > 400)
+  75               		.loc 1 18 0
+  76 004a 8981      		ldd r24,Y+1
+  77 004c 9A81      		ldd r25,Y+2
+  78 004e 8139      		cpi r24,-111
+  79 0050 21E0      		ldi r18,1
+  80 0052 9207      		cpc r25,r18
+  81 0054 04F0      		brlt .L8
+  19:perform_tasks.c **** 					desiredHeight = 40;
+  82               		.loc 1 19 0
+  83 0056 88E2      		ldi r24,lo8(40)
+  84 0058 90E0      		ldi r25,0
+  85 005a 9093 0000 		sts desiredHeight+1,r25
+  86 005e 8093 0000 		sts desiredHeight,r24
+  87 0062 00C0      		rjmp .L1
+  88               	.L8:
+  20:perform_tasks.c **** 				else if(_message->data < 0)
+  89               		.loc 1 20 0
+  90 0064 97FF      		sbrs r25,7
+  91 0066 00C0      		rjmp .L9
+  21:perform_tasks.c **** 					desiredHeight = 0;
+  92               		.loc 1 21 0
+  93 0068 1092 0000 		sts desiredHeight+1,__zero_reg__
+  94 006c 1092 0000 		sts desiredHeight,__zero_reg__
+  95 0070 00C0      		rjmp .L1
+  96               	.L9:
+  23:perform_tasks.c **** 					desiredHeight = _message->data/10;
+  97               		.loc 1 23 0
+  98 0072 6AE0      		ldi r22,lo8(10)
+  99 0074 70E0      		ldi r23,0
+ 100 0076 0E94 0000 		call __divmodhi4
+ 101 007a 7093 0000 		sts desiredHeight+1,r23
+ 102 007e 6093 0000 		sts desiredHeight,r22
+ 103 0082 00C0      		rjmp .L1
+ 104               	.L6:
+  27:perform_tasks.c **** 			pcInCharge = 0;
+ 105               		.loc 1 27 0
+ 106 0084 1092 0000 		sts pcInCharge+1,__zero_reg__
+ 107 0088 1092 0000 		sts pcInCharge,__zero_reg__
+ 108               	.L1:
+ 109               	/* epilogue start */
+ 110               		.loc 1 35 0
+ 111 008c DF91      		pop r29
+ 112 008e CF91      		pop r28
+ 113               	.LVL5:
+ 114 0090 0895      		ret
+ 115               		.cfi_endproc
+ 116               	.LFE8:
+ 118               	.global	cleanMessage
+ 120               	cleanMessage:
+ 121               	.LFB9:
+  36:perform_tasks.c **** 
+  37:perform_tasks.c **** void cleanMessage(MESSAGE* _message)
+  38:perform_tasks.c **** {
+ 122               		.loc 1 38 0
+ 123               		.cfi_startproc
+ 124               	.LVL6:
+ 125               	/* prologue: function */
+ 126               	/* frame size = 0 */
+ 127               	/* stack size = 0 */
+ 128               	.L__stack_usage = 0
+  39:perform_tasks.c **** 	_message->data = -1;
+ 129               		.loc 1 39 0
+ 130 0092 2FEF      		ldi r18,lo8(-1)
+ 131 0094 3FEF      		ldi r19,lo8(-1)
+ 132 0096 FC01      		movw r30,r24
+ 133 0098 3283      		std Z+2,r19
+ 134 009a 2183      		std Z+1,r18
+  40:perform_tasks.c **** 	_message->action = -1;
+ 135               		.loc 1 40 0
+ 136 009c 2FEF      		ldi r18,lo8(-1)
+ 137 009e 2083      		st Z,r18
+ 138 00a0 0895      		ret
+ 139               		.cfi_endproc
+ 140               	.LFE9:
+ 142               	.global	setHeightRp6
+ 144               	setHeightRp6:
+ 145               	.LFB10:
+  41:perform_tasks.c **** }
+  42:perform_tasks.c **** 
+  43:perform_tasks.c **** void setHeightRp6(int height)
+  44:perform_tasks.c **** {
+ 146               		.loc 1 44 0
+ 147               		.cfi_startproc
+ 148               	.LVL7:
+ 149               	/* prologue: function */
+ 150               	/* frame size = 0 */
+ 151               	/* stack size = 0 */
+ 152               	.L__stack_usage = 0
+  45:perform_tasks.c **** 	if(!pcInCharge)
+ 153               		.loc 1 45 0
+ 154 00a2 2091 0000 		lds r18,pcInCharge
+ 155 00a6 3091 0000 		lds r19,pcInCharge+1
+ 156 00aa 232B      		or r18,r19
+ 157 00ac 01F4      		brne .L15
+  46:perform_tasks.c **** 	{
+  47:perform_tasks.c **** 		desiredHeight = height/10;
+ 158               		.loc 1 47 0
+ 159 00ae 6AE0      		ldi r22,lo8(10)
+ 160 00b0 70E0      		ldi r23,0
+ 161 00b2 0E94 0000 		call __divmodhi4
+ 162               	.LVL8:
+ 163 00b6 7093 0000 		sts desiredHeight+1,r23
+ 164 00ba 6093 0000 		sts desiredHeight,r22
+ 165               	.L15:
+ 166 00be 0895      		ret
+ 167               		.cfi_endproc
+ 168               	.LFE10:
+ 170               	.global	maintainHeight
+ 172               	maintainHeight:
+ 173               	.LFB11:
+  48:perform_tasks.c **** 	}
+  49:perform_tasks.c **** }
+  50:perform_tasks.c **** 
+  51:perform_tasks.c **** void maintainHeight( void )
+  52:perform_tasks.c **** {
+ 174               		.loc 1 52 0
+ 175               		.cfi_startproc
+ 176               	/* prologue: function */
+ 177               	/* frame size = 0 */
+ 178               	/* stack size = 0 */
+ 179               	.L__stack_usage = 0
+  53:perform_tasks.c **** 	int currentHeight = Balloon_get_height();
+ 180               		.loc 1 53 0
+ 181 00c0 0E94 0000 		call Balloon_get_height
+ 182               	.LVL9:
+  54:perform_tasks.c **** 	if(currentHeight <= desiredHeight)
+ 183               		.loc 1 54 0
+ 184 00c4 2091 0000 		lds r18,desiredHeight
+ 185 00c8 3091 0000 		lds r19,desiredHeight+1
+ 186 00cc 2817      		cp r18,r24
+ 187 00ce 3907      		cpc r19,r25
+ 188 00d0 04F0      		brlt .L18
+  55:perform_tasks.c **** 	{
+  56:perform_tasks.c **** 		Balloon_set_valve(CLOSED);
+ 189               		.loc 1 56 0
+ 190 00d2 80E0      		ldi r24,0
+ 191               	.LVL10:
+ 192 00d4 00C0      		rjmp .L21
+ 193               	.LVL11:
+ 194               	.L18:
+ 195               	.LBB2:
+  57:perform_tasks.c **** 		Balloon_set_burner(ON);
+  58:perform_tasks.c **** 	}
+  59:perform_tasks.c **** 	else if(currentHeight >= desiredHeight)
+  60:perform_tasks.c **** 	{
+  61:perform_tasks.c **** 		int difference = (desiredHeight - currentHeight);
+ 196               		.loc 1 61 0
+ 197 00d6 281B      		sub r18,r24
+ 198 00d8 390B      		sbc r19,r25
+ 199               	.LVL12:
+  62:perform_tasks.c **** 		if(difference < 2)
+  63:perform_tasks.c **** 		{
+  64:perform_tasks.c **** 			Balloon_set_valve(OPEN);
+ 200               		.loc 1 64 0
+ 201 00da 81E0      		ldi r24,lo8(1)
+ 202               	.LVL13:
+  62:perform_tasks.c **** 		if(difference < 2)
+ 203               		.loc 1 62 0
+ 204 00dc 2230      		cpi r18,2
+ 205 00de 3105      		cpc r19,__zero_reg__
+ 206 00e0 04F4      		brge .L19
+ 207               	.LVL14:
+ 208               	.L21:
+ 209               		.loc 1 64 0
+ 210 00e2 0E94 0000 		call Balloon_set_valve
+ 211               	.LVL15:
+  65:perform_tasks.c **** 			Balloon_set_burner(ON);
+ 212               		.loc 1 65 0
+ 213 00e6 81E0      		ldi r24,lo8(1)
+ 214 00e8 00C0      		rjmp .L20
+ 215               	.LVL16:
+ 216               	.L19:
+  66:perform_tasks.c **** 		}
+  67:perform_tasks.c **** 		else
+  68:perform_tasks.c **** 		{
+  69:perform_tasks.c **** 			Balloon_set_valve(OPEN);
+ 217               		.loc 1 69 0
+ 218 00ea 0E94 0000 		call Balloon_set_valve
+ 219               	.LVL17:
+  70:perform_tasks.c **** 			Balloon_set_burner(OFF);
+ 220               		.loc 1 70 0
+ 221 00ee 80E0      		ldi r24,0
+ 222               	.L20:
+ 223 00f0 0C94 0000 		jmp Balloon_set_burner
+ 224               	.LVL18:
+ 225               	.LBE2:
+ 226               		.cfi_endproc
+ 227               	.LFE11:
+ 229               		.section	.rodata.str1.1,"aMS",@progbits,1
+ 230               	.LC0:
+ 231 0000 4F50 454E 		.string	"OPEN  "
+ 231      2020 00
+ 232               	.LC1:
+ 233 0007 434C 4F53 		.string	"CLOSED"
+ 233      4544 00
+ 234               	.LC2:
+ 235 000e 4F4E 2000 		.string	"ON "
+ 236               	.LC3:
+ 237 0012 4F46 4600 		.string	"OFF"
+ 238               		.text
+ 239               	.global	showSimParams
+ 241               	showSimParams:
+ 242               	.LFB12:
+  71:perform_tasks.c **** 		}
+  72:perform_tasks.c **** 	}
+  73:perform_tasks.c **** 	else if(currentHeight + buffer <= desiredHeight && currentHeight - buffer >= desiredHeight)
+  74:perform_tasks.c **** 	{
+  75:perform_tasks.c **** 		Balloon_set_valve(CLOSED);
+  76:perform_tasks.c **** 		Balloon_set_burner(OFF);
+  77:perform_tasks.c **** 	}
+  78:perform_tasks.c **** }
+  79:perform_tasks.c **** 
+  80:perform_tasks.c **** void showSimParams( void )
+  81:perform_tasks.c **** {
+ 243               		.loc 1 81 0
+ 244               		.cfi_startproc
+ 245               	/* prologue: function */
+ 246               	/* frame size = 0 */
+ 247               	/* stack size = 0 */
+ 248               	.L__stack_usage = 0
+  82:perform_tasks.c **** 	clearPosLCD(0,7,3);
+ 249               		.loc 1 82 0
+ 250 00f4 43E0      		ldi r20,lo8(3)
+ 251 00f6 67E0      		ldi r22,lo8(7)
+ 252 00f8 80E0      		ldi r24,0
+ 253 00fa 0E94 0000 		call clearPosLCD
+ 254               	.LVL19:
+  83:perform_tasks.c **** 	setCursorPosLCD(0, 7);
+ 255               		.loc 1 83 0
+ 256 00fe 67E0      		ldi r22,lo8(7)
+ 257 0100 80E0      		ldi r24,0
+ 258 0102 0E94 0000 		call setCursorPosLCD
+ 259               	.LVL20:
+  84:perform_tasks.c **** 	writeIntegerLCD( Balloon_get_height(), DEC);
+ 260               		.loc 1 84 0
+ 261 0106 0E94 0000 		call Balloon_get_height
+ 262               	.LVL21:
+ 263 010a 6AE0      		ldi r22,lo8(10)
+ 264 010c 0E94 0000 		call writeIntegerLCD
+ 265               	.LVL22:
+  85:perform_tasks.c **** 	
+  86:perform_tasks.c **** 	setCursorPosLCD(0, 11);
+ 266               		.loc 1 86 0
+ 267 0110 6BE0      		ldi r22,lo8(11)
+ 268 0112 80E0      		ldi r24,0
+ 269 0114 0E94 0000 		call setCursorPosLCD
+ 270               	.LVL23:
+  87:perform_tasks.c **** 	writeIntegerLCD(desiredHeight, DEC);
+ 271               		.loc 1 87 0
+ 272 0118 6AE0      		ldi r22,lo8(10)
+ 273 011a 8091 0000 		lds r24,desiredHeight
+ 274 011e 9091 0000 		lds r25,desiredHeight+1
+ 275 0122 0E94 0000 		call writeIntegerLCD
+ 276               	.LVL24:
+  88:perform_tasks.c **** 
+  89:perform_tasks.c **** 	clearPosLCD(1,3,5);
+ 277               		.loc 1 89 0
+ 278 0126 45E0      		ldi r20,lo8(5)
+ 279 0128 63E0      		ldi r22,lo8(3)
+ 280 012a 81E0      		ldi r24,lo8(1)
+ 281 012c 0E94 0000 		call clearPosLCD
+ 282               	.LVL25:
+  90:perform_tasks.c **** 	setCursorPosLCD(1, 3);
+ 283               		.loc 1 90 0
+ 284 0130 63E0      		ldi r22,lo8(3)
+ 285 0132 81E0      		ldi r24,lo8(1)
+ 286 0134 0E94 0000 		call setCursorPosLCD
+ 287               	.LVL26:
+  91:perform_tasks.c **** 	if(Balloon_get_valvestate() == OPEN) {
+ 288               		.loc 1 91 0
+ 289 0138 0E94 0000 		call Balloon_get_valvestate
+ 290               	.LVL27:
+ 291 013c 8130      		cpi r24,lo8(1)
+ 292 013e 01F4      		brne .L23
+  92:perform_tasks.c **** 		writeStringLCD("OPEN  ");
+ 293               		.loc 1 92 0
+ 294 0140 80E0      		ldi r24,lo8(.LC0)
+ 295 0142 90E0      		ldi r25,hi8(.LC0)
+ 296 0144 00C0      		rjmp .L31
+ 297               	.L23:
+  93:perform_tasks.c **** 	} else {
+  94:perform_tasks.c **** 		writeStringLCD("CLOSED");
+ 298               		.loc 1 94 0
+ 299 0146 80E0      		ldi r24,lo8(.LC1)
+ 300 0148 90E0      		ldi r25,hi8(.LC1)
+ 301               	.L31:
+ 302 014a 0E94 0000 		call writeStringLCD
+ 303               	.LVL28:
+  95:perform_tasks.c **** 	}
+  96:perform_tasks.c **** 
+  97:perform_tasks.c **** 	clearPosLCD(1,13,5);
+ 304               		.loc 1 97 0
+ 305 014e 45E0      		ldi r20,lo8(5)
+ 306 0150 6DE0      		ldi r22,lo8(13)
+ 307 0152 81E0      		ldi r24,lo8(1)
+ 308 0154 0E94 0000 		call clearPosLCD
+ 309               	.LVL29:
+  98:perform_tasks.c **** 	setCursorPosLCD(1, 13);
+ 310               		.loc 1 98 0
+ 311 0158 6DE0      		ldi r22,lo8(13)
+ 312 015a 81E0      		ldi r24,lo8(1)
+ 313 015c 0E94 0000 		call setCursorPosLCD
+ 314               	.LVL30:
+  99:perform_tasks.c **** 	if(Balloon_get_burnerstate() == ON) {
+ 315               		.loc 1 99 0
+ 316 0160 0E94 0000 		call Balloon_get_burnerstate
+ 317               	.LVL31:
+ 318 0164 8130      		cpi r24,lo8(1)
+ 319 0166 01F4      		brne .L25
+ 100:perform_tasks.c **** 		writeStringLCD("ON ");
+ 320               		.loc 1 100 0
+ 321 0168 80E0      		ldi r24,lo8(.LC2)
+ 322 016a 90E0      		ldi r25,hi8(.LC2)
+ 323 016c 00C0      		rjmp .L32
+ 324               	.L25:
+ 101:perform_tasks.c **** 	} else {
+ 102:perform_tasks.c **** 		writeStringLCD("OFF");
+ 325               		.loc 1 102 0
+ 326 016e 80E0      		ldi r24,lo8(.LC3)
+ 327 0170 90E0      		ldi r25,hi8(.LC3)
+ 328               	.L32:
+ 329 0172 0E94 0000 		call writeStringLCD
+ 330               	.LVL32:
+ 103:perform_tasks.c **** 	}
+ 104:perform_tasks.c **** 	
+ 105:perform_tasks.c **** 	int currentHeight = Balloon_get_height();		
+ 331               		.loc 1 105 0
+ 332 0176 0E94 0000 		call Balloon_get_height
+ 333               	.LVL33:
+ 106:perform_tasks.c **** 	if(currentHeight >= 8 && currentHeight <= 12)
+ 334               		.loc 1 106 0
+ 335 017a 9C01      		movw r18,r24
+ 336 017c 2850      		subi r18,8
+ 337 017e 3109      		sbc r19,__zero_reg__
+ 338 0180 2530      		cpi r18,5
+ 339 0182 3105      		cpc r19,__zero_reg__
+ 340 0184 00F4      		brsh .L27
+ 107:perform_tasks.c **** 		setLEDs(0b0001);
+ 341               		.loc 1 107 0
+ 342 0186 81E0      		ldi r24,lo8(1)
+ 343               	.LVL34:
+ 344 0188 00C0      		rjmp .L33
+ 345               	.LVL35:
+ 346               	.L27:
+ 108:perform_tasks.c **** 	else if(currentHeight >= 18 && currentHeight <= 22)
+ 347               		.loc 1 108 0
+ 348 018a 9C01      		movw r18,r24
+ 349 018c 2251      		subi r18,18
+ 350 018e 3109      		sbc r19,__zero_reg__
+ 351 0190 2530      		cpi r18,5
+ 352 0192 3105      		cpc r19,__zero_reg__
+ 353 0194 00F4      		brsh .L28
+ 109:perform_tasks.c **** 		setLEDs(0b0010);
+ 354               		.loc 1 109 0
+ 355 0196 82E0      		ldi r24,lo8(2)
+ 356               	.LVL36:
+ 357 0198 00C0      		rjmp .L33
+ 358               	.LVL37:
+ 359               	.L28:
+ 110:perform_tasks.c **** 	else if(currentHeight >= 28 && currentHeight <= 32)
+ 360               		.loc 1 110 0
+ 361 019a 9C01      		movw r18,r24
+ 362 019c 2C51      		subi r18,28
+ 363 019e 3109      		sbc r19,__zero_reg__
+ 364 01a0 2530      		cpi r18,5
+ 365 01a2 3105      		cpc r19,__zero_reg__
+ 366 01a4 00F4      		brsh .L29
+ 111:perform_tasks.c **** 		setLEDs(0b0100);
+ 367               		.loc 1 111 0
+ 368 01a6 84E0      		ldi r24,lo8(4)
+ 369               	.LVL38:
+ 370 01a8 00C0      		rjmp .L33
+ 371               	.LVL39:
+ 372               	.L29:
+ 112:perform_tasks.c **** 	else if(currentHeight >= 38 && currentHeight <= 42)
+ 373               		.loc 1 112 0
+ 374 01aa 8697      		sbiw r24,38
+ 375               	.LVL40:
+ 376 01ac 0597      		sbiw r24,5
+ 377 01ae 00F4      		brsh .L30
+ 113:perform_tasks.c **** 		setLEDs(0b1000);
+ 378               		.loc 1 113 0
+ 379 01b0 88E0      		ldi r24,lo8(8)
+ 380 01b2 00C0      		rjmp .L33
+ 381               	.L30:
+ 114:perform_tasks.c **** 	else
+ 115:perform_tasks.c **** 		setLEDs(0b0000);
+ 382               		.loc 1 115 0
+ 383 01b4 80E0      		ldi r24,0
+ 384               	.LVL41:
+ 385               	.L33:
+ 386 01b6 0C94 0000 		jmp setLEDs
+ 387               	.LVL42:
+ 388               		.cfi_endproc
+ 389               	.LFE12:
+ 391               	.global	buffer
+ 392               		.data
+ 395               	buffer:
+ 396 0000 0200      		.word	2
+ 397               	.global	desiredHeight
+ 398               		.section .bss
+ 401               	desiredHeight:
+ 402 0000 0000      		.zero	2
+ 403               	.global	pcInCharge
+ 406               	pcInCharge:
+ 407 0002 0000      		.zero	2
+ 408               		.comm	timer,2,1
+ 409               		.text
+ 410               	.Letext0:
+ 411               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 412               		.file 3 "message.h"
+ 413               		.file 4 "./LPABallonLib/LPA_Lib_ballon.h"
+ 414               		.file 5 "./RP6Lib/RP6control/RP6ControlLib.h"
+ 415               		.file 6 "action_enum.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 perform_tasks.c
+     /tmp/ccWrOWtT.s:2      *ABS*:0000003e __SP_H__
+     /tmp/ccWrOWtT.s:3      *ABS*:0000003d __SP_L__
+     /tmp/ccWrOWtT.s:4      *ABS*:0000003f __SREG__
+     /tmp/ccWrOWtT.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccWrOWtT.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccWrOWtT.s:12     .text:00000000 performTasks
+     /tmp/ccWrOWtT.s:406    .bss:00000002 pcInCharge
+     /tmp/ccWrOWtT.s:401    .bss:00000000 desiredHeight
+     /tmp/ccWrOWtT.s:120    .text:00000092 cleanMessage
+     /tmp/ccWrOWtT.s:144    .text:000000a2 setHeightRp6
+     /tmp/ccWrOWtT.s:172    .text:000000c0 maintainHeight
+     /tmp/ccWrOWtT.s:241    .text:000000f4 showSimParams
+     /tmp/ccWrOWtT.s:395    .data:00000000 buffer
+                            *COM*:00000002 timer
+
+UNDEFINED SYMBOLS
+Balloon_get_height
+Write
+__divmodhi4
+Balloon_set_valve
+Balloon_set_burner
+clearPosLCD
+setCursorPosLCD
+writeIntegerLCD
+Balloon_get_valvestate
+writeStringLCD
+Balloon_get_burnerstate
+setLEDs
+__do_copy_data
+__do_clear_bss

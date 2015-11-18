@@ -1,0 +1,122 @@
+   1               		.file	"initialize.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               	.global	Initialize
+  12               	Initialize:
+  13               	.LFB7:
+  14               		.file 1 "initialize.c"
+   1:initialize.c  **** #include "initialize.h" 
+   2:initialize.c  **** 
+   3:initialize.c  **** /**
+   4:initialize.c  ****  * This function initializes the Rp6.
+   5:initialize.c  ****  */
+   6:initialize.c  **** void Initialize()
+   7:initialize.c  **** {
+  15               		.loc 1 7 0
+  16               		.cfi_startproc
+  17               	/* prologue: function */
+  18               	/* frame size = 0 */
+  19               	/* stack size = 0 */
+  20               	.L__stack_usage = 0
+   8:initialize.c  **** 	// init rp6
+   9:initialize.c  **** 	initRP6Control();  
+  21               		.loc 1 9 0
+  22 0000 0E94 0000 		call initRP6Control
+  23               	.LVL0:
+  10:initialize.c  **** 	initLCD();
+  24               		.loc 1 10 0
+  25 0004 0E94 0000 		call initLCD
+  26               	.LVL1:
+  11:initialize.c  **** 	Balloon_reset();
+  27               		.loc 1 11 0
+  28 0008 0E94 0000 		call Balloon_reset
+  29               	.LVL2:
+  12:initialize.c  **** 
+  13:initialize.c  ****     // do some init stuff
+  14:initialize.c  **** 	setLEDs(0b1111);
+  30               		.loc 1 14 0
+  31 000c 8FE0      		ldi r24,lo8(15)
+  32 000e 0E94 0000 		call setLEDs
+  33               	.LVL3:
+  15:initialize.c  **** 	showScreenLCD("LPA Tom Hartogs", "Hot Air Balloon");
+  34               		.loc 1 15 0
+  35 0012 60E0      		ldi r22,lo8(__c.2154)
+  36 0014 70E0      		ldi r23,hi8(__c.2154)
+  37 0016 80E0      		ldi r24,lo8(__c.2152)
+  38 0018 90E0      		ldi r25,hi8(__c.2152)
+  39 001a 0E94 0000 		call _showScreenLCD_P
+  40               	.LVL4:
+  16:initialize.c  **** 	mSleep(1000);
+  41               		.loc 1 16 0
+  42 001e 88EE      		ldi r24,lo8(-24)
+  43 0020 93E0      		ldi r25,lo8(3)
+  44 0022 0E94 0000 		call mSleep
+  45               	.LVL5:
+  17:initialize.c  **** 	showScreenLCD("height:  ", "VS:       BS:");
+  46               		.loc 1 17 0
+  47 0026 60E0      		ldi r22,lo8(__c.2158)
+  48 0028 70E0      		ldi r23,hi8(__c.2158)
+  49 002a 80E0      		ldi r24,lo8(__c.2156)
+  50 002c 90E0      		ldi r25,hi8(__c.2156)
+  51 002e 0E94 0000 		call _showScreenLCD_P
+  52               	.LVL6:
+  18:initialize.c  **** 	setLEDs(0b0000);
+  53               		.loc 1 18 0
+  54 0032 80E0      		ldi r24,0
+  55 0034 0C94 0000 		jmp setLEDs
+  56               	.LVL7:
+  57               		.cfi_endproc
+  58               	.LFE7:
+  60               		.section	.progmem.data,"a",@progbits
+  63               	__c.2156:
+  64 0000 6865 6967 		.string	"height:  "
+  64      6874 3A20 
+  64      2000 
+  67               	__c.2158:
+  68 000a 5653 3A20 		.string	"VS:       BS:"
+  68      2020 2020 
+  68      2020 4253 
+  68      3A00 
+  71               	__c.2152:
+  72 0018 4C50 4120 		.string	"LPA Tom Hartogs"
+  72      546F 6D20 
+  72      4861 7274 
+  72      6F67 7300 
+  75               	__c.2154:
+  76 0028 486F 7420 		.string	"Hot Air Balloon"
+  76      4169 7220 
+  76      4261 6C6C 
+  76      6F6F 6E00 
+  77               		.comm	timer,2,1
+  78               		.text
+  79               	.Letext0:
+  80               		.file 2 "/usr/lib/avr/include/stdint.h"
+  81               		.file 3 "./RP6Lib/RP6control/RP6ControlLib.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 initialize.c
+     /tmp/ccvaHy1H.s:2      *ABS*:0000003e __SP_H__
+     /tmp/ccvaHy1H.s:3      *ABS*:0000003d __SP_L__
+     /tmp/ccvaHy1H.s:4      *ABS*:0000003f __SREG__
+     /tmp/ccvaHy1H.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccvaHy1H.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccvaHy1H.s:12     .text:00000000 Initialize
+     /tmp/ccvaHy1H.s:75     .progmem.data:00000028 __c.2154
+     /tmp/ccvaHy1H.s:71     .progmem.data:00000018 __c.2152
+     /tmp/ccvaHy1H.s:67     .progmem.data:0000000a __c.2158
+     /tmp/ccvaHy1H.s:63     .progmem.data:00000000 __c.2156
+                            *COM*:00000002 timer
+
+UNDEFINED SYMBOLS
+initRP6Control
+initLCD
+Balloon_reset
+setLEDs
+_showScreenLCD_P
+mSleep
+__do_clear_bss

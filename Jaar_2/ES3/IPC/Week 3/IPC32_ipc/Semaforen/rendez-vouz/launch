@@ -1,0 +1,17 @@
+#!/bin/bash
+
+clear
+
+echo "launching programms"
+
+./rendezVouz -start statement1.1 statement2.1 &
+
+sleep 0.1s
+
+./rendezVouz statement1.2 statement2.2 &
+
+./rendezVouz statement1.3 statement2.3 &
+
+./rendezVouz statement1.4 statement2.4
+
+sleep 0.1s

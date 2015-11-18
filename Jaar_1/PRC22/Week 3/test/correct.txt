@@ -1,0 +1,305 @@
+PRC assignment 'SteganoC' (version 2)
+-------------------------------------
+
+
+MENU
+===================
+[1] multiplex
+[2] multiplex text
+[3] demultiplex
+[4] demultiplex text
+[6] test bit
+[7] test bmp
+[8] show/hide menu
+[9] quit
+Choice: printing of MENU is disabled
+SteganoGetSubstring(0xd4,0,1,0) = 0x00
+SteganoGetSubstring(0xd4,0,1,1) = 0x00
+SteganoGetSubstring(0xd4,0,1,2) = 0x00
+SteganoGetSubstring(0xd4,0,1,3) = 0x00
+SteganoGetSubstring(0xd4,0,1,4) = 0x00
+SteganoGetSubstring(0xd4,0,1,5) = 0x00
+SteganoGetSubstring(0xd4,0,1,6) = 0x00
+SteganoGetSubstring(0xd4,0,1,7) = 0x00
+SteganoGetSubstring(0xd4,1,1,0) = 0x00
+SteganoGetSubstring(0xd4,1,1,1) = 0x00
+SteganoGetSubstring(0xd4,1,1,2) = 0x00
+SteganoGetSubstring(0xd4,1,1,3) = 0x00
+SteganoGetSubstring(0xd4,1,1,4) = 0x00
+SteganoGetSubstring(0xd4,1,1,5) = 0x00
+SteganoGetSubstring(0xd4,1,1,6) = 0x00
+SteganoGetSubstring(0xd4,1,1,7) = 0x00
+SteganoGetSubstring(0xd4,2,1,0) = 0x01
+SteganoGetSubstring(0xd4,2,1,1) = 0x02
+SteganoGetSubstring(0xd4,2,1,2) = 0x04
+SteganoGetSubstring(0xd4,2,1,3) = 0x08
+SteganoGetSubstring(0xd4,2,1,4) = 0x10
+SteganoGetSubstring(0xd4,2,1,5) = 0x20
+SteganoGetSubstring(0xd4,2,1,6) = 0x40
+SteganoGetSubstring(0xd4,2,1,7) = 0x80
+SteganoGetSubstring(0xd4,3,1,0) = 0x00
+SteganoGetSubstring(0xd4,3,1,1) = 0x00
+SteganoGetSubstring(0xd4,3,1,2) = 0x00
+SteganoGetSubstring(0xd4,3,1,3) = 0x00
+SteganoGetSubstring(0xd4,3,1,4) = 0x00
+SteganoGetSubstring(0xd4,3,1,5) = 0x00
+SteganoGetSubstring(0xd4,3,1,6) = 0x00
+SteganoGetSubstring(0xd4,3,1,7) = 0x00
+SteganoGetSubstring(0xd4,4,1,0) = 0x01
+SteganoGetSubstring(0xd4,4,1,1) = 0x02
+SteganoGetSubstring(0xd4,4,1,2) = 0x04
+SteganoGetSubstring(0xd4,4,1,3) = 0x08
+SteganoGetSubstring(0xd4,4,1,4) = 0x10
+SteganoGetSubstring(0xd4,4,1,5) = 0x20
+SteganoGetSubstring(0xd4,4,1,6) = 0x40
+SteganoGetSubstring(0xd4,4,1,7) = 0x80
+SteganoGetSubstring(0xd4,5,1,0) = 0x00
+SteganoGetSubstring(0xd4,5,1,1) = 0x00
+SteganoGetSubstring(0xd4,5,1,2) = 0x00
+SteganoGetSubstring(0xd4,5,1,3) = 0x00
+SteganoGetSubstring(0xd4,5,1,4) = 0x00
+SteganoGetSubstring(0xd4,5,1,5) = 0x00
+SteganoGetSubstring(0xd4,5,1,6) = 0x00
+SteganoGetSubstring(0xd4,5,1,7) = 0x00
+SteganoGetSubstring(0xd4,6,1,0) = 0x01
+SteganoGetSubstring(0xd4,6,1,1) = 0x02
+SteganoGetSubstring(0xd4,6,1,2) = 0x04
+SteganoGetSubstring(0xd4,6,1,3) = 0x08
+SteganoGetSubstring(0xd4,6,1,4) = 0x10
+SteganoGetSubstring(0xd4,6,1,5) = 0x20
+SteganoGetSubstring(0xd4,6,1,6) = 0x40
+SteganoGetSubstring(0xd4,6,1,7) = 0x80
+SteganoGetSubstring(0xd4,7,1,0) = 0x01
+SteganoGetSubstring(0xd4,7,1,1) = 0x02
+SteganoGetSubstring(0xd4,7,1,2) = 0x04
+SteganoGetSubstring(0xd4,7,1,3) = 0x08
+SteganoGetSubstring(0xd4,7,1,4) = 0x10
+SteganoGetSubstring(0xd4,7,1,5) = 0x20
+SteganoGetSubstring(0xd4,7,1,6) = 0x40
+SteganoGetSubstring(0xd4,7,1,7) = 0x80
+SteganoGetSubstring(0xd4,0,2,0) = 0x00
+SteganoGetSubstring(0xd4,0,2,1) = 0x00
+SteganoGetSubstring(0xd4,0,2,2) = 0x00
+SteganoGetSubstring(0xd4,0,2,3) = 0x00
+SteganoGetSubstring(0xd4,0,2,4) = 0x00
+SteganoGetSubstring(0xd4,0,2,5) = 0x00
+SteganoGetSubstring(0xd4,0,2,6) = 0x00
+SteganoGetSubstring(0xd4,1,2,0) = 0x02
+SteganoGetSubstring(0xd4,1,2,1) = 0x04
+SteganoGetSubstring(0xd4,1,2,2) = 0x08
+SteganoGetSubstring(0xd4,1,2,3) = 0x10
+SteganoGetSubstring(0xd4,1,2,4) = 0x20
+SteganoGetSubstring(0xd4,1,2,5) = 0x40
+SteganoGetSubstring(0xd4,1,2,6) = 0x80
+SteganoGetSubstring(0xd4,2,2,0) = 0x01
+SteganoGetSubstring(0xd4,2,2,1) = 0x02
+SteganoGetSubstring(0xd4,2,2,2) = 0x04
+SteganoGetSubstring(0xd4,2,2,3) = 0x08
+SteganoGetSubstring(0xd4,2,2,4) = 0x10
+SteganoGetSubstring(0xd4,2,2,5) = 0x20
+SteganoGetSubstring(0xd4,2,2,6) = 0x40
+SteganoGetSubstring(0xd4,3,2,0) = 0x02
+SteganoGetSubstring(0xd4,3,2,1) = 0x04
+SteganoGetSubstring(0xd4,3,2,2) = 0x08
+SteganoGetSubstring(0xd4,3,2,3) = 0x10
+SteganoGetSubstring(0xd4,3,2,4) = 0x20
+SteganoGetSubstring(0xd4,3,2,5) = 0x40
+SteganoGetSubstring(0xd4,3,2,6) = 0x80
+SteganoGetSubstring(0xd4,4,2,0) = 0x01
+SteganoGetSubstring(0xd4,4,2,1) = 0x02
+SteganoGetSubstring(0xd4,4,2,2) = 0x04
+SteganoGetSubstring(0xd4,4,2,3) = 0x08
+SteganoGetSubstring(0xd4,4,2,4) = 0x10
+SteganoGetSubstring(0xd4,4,2,5) = 0x20
+SteganoGetSubstring(0xd4,4,2,6) = 0x40
+SteganoGetSubstring(0xd4,5,2,0) = 0x02
+SteganoGetSubstring(0xd4,5,2,1) = 0x04
+SteganoGetSubstring(0xd4,5,2,2) = 0x08
+SteganoGetSubstring(0xd4,5,2,3) = 0x10
+SteganoGetSubstring(0xd4,5,2,4) = 0x20
+SteganoGetSubstring(0xd4,5,2,5) = 0x40
+SteganoGetSubstring(0xd4,5,2,6) = 0x80
+SteganoGetSubstring(0xd4,6,2,0) = 0x03
+SteganoGetSubstring(0xd4,6,2,1) = 0x06
+SteganoGetSubstring(0xd4,6,2,2) = 0x0c
+SteganoGetSubstring(0xd4,6,2,3) = 0x18
+SteganoGetSubstring(0xd4,6,2,4) = 0x30
+SteganoGetSubstring(0xd4,6,2,5) = 0x60
+SteganoGetSubstring(0xd4,6,2,6) = 0xc0
+SteganoGetSubstring(0xd4,0,3,0) = 0x04
+SteganoGetSubstring(0xd4,0,3,1) = 0x08
+SteganoGetSubstring(0xd4,0,3,2) = 0x10
+SteganoGetSubstring(0xd4,0,3,3) = 0x20
+SteganoGetSubstring(0xd4,0,3,4) = 0x40
+SteganoGetSubstring(0xd4,0,3,5) = 0x80
+SteganoGetSubstring(0xd4,1,3,0) = 0x02
+SteganoGetSubstring(0xd4,1,3,1) = 0x04
+SteganoGetSubstring(0xd4,1,3,2) = 0x08
+SteganoGetSubstring(0xd4,1,3,3) = 0x10
+SteganoGetSubstring(0xd4,1,3,4) = 0x20
+SteganoGetSubstring(0xd4,1,3,5) = 0x40
+SteganoGetSubstring(0xd4,2,3,0) = 0x05
+SteganoGetSubstring(0xd4,2,3,1) = 0x0a
+SteganoGetSubstring(0xd4,2,3,2) = 0x14
+SteganoGetSubstring(0xd4,2,3,3) = 0x28
+SteganoGetSubstring(0xd4,2,3,4) = 0x50
+SteganoGetSubstring(0xd4,2,3,5) = 0xa0
+SteganoGetSubstring(0xd4,3,3,0) = 0x02
+SteganoGetSubstring(0xd4,3,3,1) = 0x04
+SteganoGetSubstring(0xd4,3,3,2) = 0x08
+SteganoGetSubstring(0xd4,3,3,3) = 0x10
+SteganoGetSubstring(0xd4,3,3,4) = 0x20
+SteganoGetSubstring(0xd4,3,3,5) = 0x40
+SteganoGetSubstring(0xd4,4,3,0) = 0x05
+SteganoGetSubstring(0xd4,4,3,1) = 0x0a
+SteganoGetSubstring(0xd4,4,3,2) = 0x14
+SteganoGetSubstring(0xd4,4,3,3) = 0x28
+SteganoGetSubstring(0xd4,4,3,4) = 0x50
+SteganoGetSubstring(0xd4,4,3,5) = 0xa0
+SteganoGetSubstring(0xd4,5,3,0) = 0x06
+SteganoGetSubstring(0xd4,5,3,1) = 0x0c
+SteganoGetSubstring(0xd4,5,3,2) = 0x18
+SteganoGetSubstring(0xd4,5,3,3) = 0x30
+SteganoGetSubstring(0xd4,5,3,4) = 0x60
+SteganoGetSubstring(0xd4,5,3,5) = 0xc0
+SteganoGetSubstring(0xd4,0,4,0) = 0x04
+SteganoGetSubstring(0xd4,0,4,1) = 0x08
+SteganoGetSubstring(0xd4,0,4,2) = 0x10
+SteganoGetSubstring(0xd4,0,4,3) = 0x20
+SteganoGetSubstring(0xd4,0,4,4) = 0x40
+SteganoGetSubstring(0xd4,1,4,0) = 0x0a
+SteganoGetSubstring(0xd4,1,4,1) = 0x14
+SteganoGetSubstring(0xd4,1,4,2) = 0x28
+SteganoGetSubstring(0xd4,1,4,3) = 0x50
+SteganoGetSubstring(0xd4,1,4,4) = 0xa0
+SteganoGetSubstring(0xd4,2,4,0) = 0x05
+SteganoGetSubstring(0xd4,2,4,1) = 0x0a
+SteganoGetSubstring(0xd4,2,4,2) = 0x14
+SteganoGetSubstring(0xd4,2,4,3) = 0x28
+SteganoGetSubstring(0xd4,2,4,4) = 0x50
+SteganoGetSubstring(0xd4,3,4,0) = 0x0a
+SteganoGetSubstring(0xd4,3,4,1) = 0x14
+SteganoGetSubstring(0xd4,3,4,2) = 0x28
+SteganoGetSubstring(0xd4,3,4,3) = 0x50
+SteganoGetSubstring(0xd4,3,4,4) = 0xa0
+SteganoGetSubstring(0xd4,4,4,0) = 0x0d
+SteganoGetSubstring(0xd4,4,4,1) = 0x1a
+SteganoGetSubstring(0xd4,4,4,2) = 0x34
+SteganoGetSubstring(0xd4,4,4,3) = 0x68
+SteganoGetSubstring(0xd4,4,4,4) = 0xd0
+SteganoGetSubstring(0xd4,0,5,0) = 0x14
+SteganoGetSubstring(0xd4,0,5,1) = 0x28
+SteganoGetSubstring(0xd4,0,5,2) = 0x50
+SteganoGetSubstring(0xd4,0,5,3) = 0xa0
+SteganoGetSubstring(0xd4,1,5,0) = 0x0a
+SteganoGetSubstring(0xd4,1,5,1) = 0x14
+SteganoGetSubstring(0xd4,1,5,2) = 0x28
+SteganoGetSubstring(0xd4,1,5,3) = 0x50
+SteganoGetSubstring(0xd4,2,5,0) = 0x15
+SteganoGetSubstring(0xd4,2,5,1) = 0x2a
+SteganoGetSubstring(0xd4,2,5,2) = 0x54
+SteganoGetSubstring(0xd4,2,5,3) = 0xa8
+SteganoGetSubstring(0xd4,3,5,0) = 0x1a
+SteganoGetSubstring(0xd4,3,5,1) = 0x34
+SteganoGetSubstring(0xd4,3,5,2) = 0x68
+SteganoGetSubstring(0xd4,3,5,3) = 0xd0
+SteganoGetSubstring(0xd4,0,6,0) = 0x14
+SteganoGetSubstring(0xd4,0,6,1) = 0x28
+SteganoGetSubstring(0xd4,0,6,2) = 0x50
+SteganoGetSubstring(0xd4,1,6,0) = 0x2a
+SteganoGetSubstring(0xd4,1,6,1) = 0x54
+SteganoGetSubstring(0xd4,1,6,2) = 0xa8
+SteganoGetSubstring(0xd4,2,6,0) = 0x35
+SteganoGetSubstring(0xd4,2,6,1) = 0x6a
+SteganoGetSubstring(0xd4,2,6,2) = 0xd4
+SteganoGetSubstring(0xd4,0,7,0) = 0x54
+SteganoGetSubstring(0xd4,0,7,1) = 0xa8
+SteganoGetSubstring(0xd4,1,7,0) = 0x6a
+SteganoGetSubstring(0xd4,1,7,1) = 0xd4
+header of 'mux_ImageTrabant.bmp_ImageRedFerrari.bmp_0.bmp':
+000c8a36 01ac0280 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000000 
+first 8 pixels: 585d5e 4e5354 4e5354 585d5e 575c5d 4d5253 4d5255 575c5f 
+last  8 pixels: 115848 115a4a 135b4e 1b6356 22675c 175c51 11544b 195c53 
+header of 'mux_ImageTrabant.bmp_ImageRedFerrari.bmp_1.bmp':
+000c8a36 01ac0280 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000001 
+first 8 pixels: 595d5f 4f5355 4f5355 595d5f 575d5d 4d5353 4d5355 575d5f 
+last  8 pixels: 105848 105a4a 125a4e 1a6256 22665c 165c50 10544a 185c52 
+header of 'mux_ImageTrabant.bmp_ImageRedFerrari.bmp_4.bmp':
+000c8a36 01ac0280 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000004 
+first 8 pixels: 5d5d5d 4d5d5d 4d5d5d 5d5d5d 5d5d5d 4d5d5d 4d5d5d 5d5d5d 
+last  8 pixels: 105040 105040 105040 106050 206050 105050 105040 105050 
+header of 'mux_ImageTrabant.bmp_ImageRedFerrari.bmp_7.bmp':
+000c8a36 01ac0280 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000007 
+first 8 pixels: 696969 696969 696969 696969 696969 696969 696969 696969 
+last  8 pixels: 000000 000000 000000 000000 000000 000000 000000 000000 
+header of 'mux_ImageTrabant.bmp_ImageRedFerrari.bmp_8.bmp':
+000c8a36 01ac0280 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000008 
+first 8 pixels: d3d3d3 d3d3d3 d3d3d3 d3d3d3 d3d3d3 d3d3d3 d3d3d3 d3d3d3 
+last  8 pixels: 000000 000000 000000 000000 000000 000000 000000 000000 
+header of 'demux_ImageTrabant_4.bmp':
+000c8a36 00000000 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000000 
+first 8 pixels: 505050 405050 405050 505050 505050 405050 405050 505050 
+last  8 pixels: 105040 105040 105040 106050 206050 105050 105040 105050 
+header of 'demux_ImageRedFerrari_7.bmp':
+000c8a36 00000000 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000000 
+first 8 pixels: d2d2d2 d2d2d2 d2d2d2 d2d2d2 d2d2d2 d2d2d2 d2d2d2 d2d2d2 
+last  8 pixels: 000000 000000 000000 000000 000000 000000 000000 000000 
+header of 'demux_ImageTrabant_1.bmp':
+000c8a36 00000000 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000000 
+first 8 pixels: 585c5e 4e5254 4e5254 585c5e 565c5c 4c5252 4c5254 565c5e 
+last  8 pixels: 105848 105a4a 125a4e 1a6256 22665c 165c50 10544a 185c52 
+header of 'demux_ImageRedFerrari_4.bmp':
+000c8a36 00000000 00000036 00000028 
+00000280 000001ac 00180001 00000000 
+000c8a00 00000ec4 00000ec4 00000000 
+00000000 
+first 8 pixels: d0d0d0 d0d0d0 d0d0d0 d0d0d0 d0d0d0 d0d0d0 d0d0d0 d0d0d0 
+last  8 pixels: 000000 000000 000000 000000 000000 000000 000000 000000 
+header of 'mux_ImageCitroen2Cv.bmp_TextFontys.txt.bmp':
+00056616 0000115d 00000036 00000028 
+000001b8 0000010c 00180001 00000000 
+000565e0 00000000 00000000 00000000 
+00000000 
+first 8 pixels: 74868b 98abae 617476 7c918e 91a4a3 889e9a 93a8a3 8ca39c 
+last  8 pixels: 3e5d36 4a6942 395833 375631 32502d 32502d 304e2b 365431 
+header of 'demux_ImageCitroen2Cv.bmp':
+00056616 00000000 00000036 00000028 
+000001b8 0000010c 00180001 00000000 
+000565e0 00000000 00000000 00000000 
+00000000 
+first 8 pixels: 74868a 98aaae 607476 7c908e 90a4a2 889e9a 92a8a2 8ca29c 
+last  8 pixels: 3e5d36 4a6942 395833 375631 32502d 32502d 304e2b 365431 
+header of 'demux_TextFontys.txt':
+6945202a 6f68646e 206e6576 0d2a2a2a 
+440a0d0a 65542065 696e6863 65686373 
+696e5520 73726576 69657469 69452074 
+6f68646e 
+first 8 pixels: 76656e 20656e 20466f 6e7479 732048 6f6765 736368 6f6c65 
+last  8 pixels: 6e7479 732e6e 6c0d0a 0d0a2d 2d2065 696e64 65202d 2d0d0a 
+
+Resource checks: OK
+

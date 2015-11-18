@@ -1,0 +1,17 @@
+#!/bin/bash
+
+clear
+
+echo "launching programms"
+
+./program -start statement1.1 statement2.1 &
+
+sleep 0.1s
+
+./program statement1.2 statement2.2 &
+
+./program statement1.3 statement2.3 &
+
+./program statement1.4 statement2.4
+
+sleep 0.1s

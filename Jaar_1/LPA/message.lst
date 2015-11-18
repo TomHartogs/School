@@ -1,0 +1,478 @@
+   1               		.file	"message.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.text
+   8               	.Ltext0:
+   9               		.cfi_sections	.debug_frame
+  10               	.global	Read
+  12               	Read:
+  13               	.LFB2:
+  14               		.file 1 "message.c"
+   1:message.c     **** #include "message.h" 
+   2:message.c     **** 
+   3:message.c     **** #define MIN_REQUEST_SIZE	5
+   4:message.c     **** #define MAX_REQUEST_SIZE	8
+   5:message.c     **** #define BEGIN_MARK '{'
+   6:message.c     **** #define END_MARK '}'
+   7:message.c     **** 
+   8:message.c     **** int Read(MESSAGE* _message)
+   9:message.c     **** {	
+  15               		.loc 1 9 0
+  16               		.cfi_startproc
+  17               	.LVL0:
+  18 0000 8F92      		push r8
+  19               	.LCFI0:
+  20               		.cfi_def_cfa_offset 3
+  21               		.cfi_offset 8, -2
+  22 0002 9F92      		push r9
+  23               	.LCFI1:
+  24               		.cfi_def_cfa_offset 4
+  25               		.cfi_offset 9, -3
+  26 0004 AF92      		push r10
+  27               	.LCFI2:
+  28               		.cfi_def_cfa_offset 5
+  29               		.cfi_offset 10, -4
+  30 0006 BF92      		push r11
+  31               	.LCFI3:
+  32               		.cfi_def_cfa_offset 6
+  33               		.cfi_offset 11, -5
+  34 0008 CF92      		push r12
+  35               	.LCFI4:
+  36               		.cfi_def_cfa_offset 7
+  37               		.cfi_offset 12, -6
+  38 000a DF92      		push r13
+  39               	.LCFI5:
+  40               		.cfi_def_cfa_offset 8
+  41               		.cfi_offset 13, -7
+  42 000c EF92      		push r14
+  43               	.LCFI6:
+  44               		.cfi_def_cfa_offset 9
+  45               		.cfi_offset 14, -8
+  46 000e FF92      		push r15
+  47               	.LCFI7:
+  48               		.cfi_def_cfa_offset 10
+  49               		.cfi_offset 15, -9
+  50 0010 0F93      		push r16
+  51               	.LCFI8:
+  52               		.cfi_def_cfa_offset 11
+  53               		.cfi_offset 16, -10
+  54 0012 1F93      		push r17
+  55               	.LCFI9:
+  56               		.cfi_def_cfa_offset 12
+  57               		.cfi_offset 17, -11
+  58 0014 CF93      		push r28
+  59               	.LCFI10:
+  60               		.cfi_def_cfa_offset 13
+  61               		.cfi_offset 28, -12
+  62 0016 DF93      		push r29
+  63               	.LCFI11:
+  64               		.cfi_def_cfa_offset 14
+  65               		.cfi_offset 29, -13
+  66 0018 CDB7      		in r28,__SP_L__
+  67 001a DEB7      		in r29,__SP_H__
+  68               	.LCFI12:
+  69               		.cfi_def_cfa_register 28
+  70 001c 2897      		sbiw r28,8
+  71               	.LCFI13:
+  72               		.cfi_def_cfa_offset 22
+  73 001e 0FB6      		in __tmp_reg__,__SREG__
+  74 0020 F894      		cli
+  75 0022 DEBF      		out __SP_H__,r29
+  76 0024 0FBE      		out __SREG__,__tmp_reg__
+  77 0026 CDBF      		out __SP_L__,r28
+  78               	/* prologue: function */
+  79               	/* frame size = 8 */
+  80               	/* stack size = 20 */
+  81               	.L__stack_usage = 20
+  82 0028 7C01      		movw r14,r24
+  83               	.LVL1:
+  10:message.c     **** 	char request_buffer[MAX_REQUEST_SIZE];
+  11:message.c     **** 	int buffer_pos = 0;
+  12:message.c     **** 	if(getBufferLength() > MIN_REQUEST_SIZE)
+  84               		.loc 1 12 0
+  85 002a 0E94 0000 		call getBufferLength
+  86               	.LVL2:
+  87 002e 8630      		cpi r24,lo8(6)
+  88 0030 00F4      		brsh .L2
+  89               	.LVL3:
+  90               	.L4:
+  13:message.c     **** 	{
+  14:message.c     **** 		request_buffer[buffer_pos] = readChar();	
+  15:message.c     **** 		if(request_buffer[buffer_pos] == BEGIN_MARK)
+  16:message.c     ****         {
+  17:message.c     **** 			writeChar(request_buffer[buffer_pos]);
+  18:message.c     **** 			buffer_pos++;
+  19:message.c     **** 			request_buffer[buffer_pos] = readChar();
+  20:message.c     **** 			if(request_buffer[buffer_pos] == BEGIN_MARK);
+  21:message.c     **** 			{
+  22:message.c     **** 				writeChar(request_buffer[buffer_pos]);
+  23:message.c     **** 				while(request_buffer[buffer_pos - 1] != END_MARK && 
+  24:message.c     **** 				      buffer_pos <= (MAX_REQUEST_SIZE - 1))
+  25:message.c     **** 				{
+  26:message.c     **** 					buffer_pos++;
+  27:message.c     **** 					request_buffer[buffer_pos] = readChar();
+  28:message.c     **** 					writeChar(request_buffer[buffer_pos]);
+  29:message.c     **** 				}
+  30:message.c     **** 				if(request_buffer[0] == BEGIN_MARK &&
+  31:message.c     **** 				   request_buffer[1] == BEGIN_MARK &&
+  32:message.c     **** 				   request_buffer[buffer_pos] == END_MARK &&
+  33:message.c     **** 				   request_buffer[buffer_pos - 1] == END_MARK)
+  34:message.c     **** 				{
+  35:message.c     **** 					_message->action = request_buffer[2];
+  36:message.c     **** 					
+  37:message.c     **** 					int data = 0;
+  38:message.c     **** 					if(buffer_pos == 7 &&
+  39:message.c     **** 					   _message->action == SET_HEIGHT)
+  40:message.c     **** 					{
+  41:message.c     **** 						data = (request_buffer[3] - '0') * 100;
+  42:message.c     **** 						data += (request_buffer[4] - '0') * 10;
+  43:message.c     **** 						data += request_buffer[5] - '0';
+  44:message.c     **** 						_message->data = data;
+  45:message.c     **** 						writeChar('\n');
+  46:message.c     **** 						writeChar(_message->action);
+  47:message.c     **** 						writeInteger(data, DEC);
+  48:message.c     **** 						return 1;
+  49:message.c     **** 					}
+  50:message.c     **** 					else if(buffer_pos == (MIN_REQUEST_SIZE - 1) && _message->action != SET_HEIGHT)
+  51:message.c     **** 					{
+  52:message.c     **** 						writeChar('\n');
+  53:message.c     **** 						writeChar(_message->action);
+  54:message.c     **** 						return 1;	
+  55:message.c     **** 					}
+  56:message.c     **** 					return 0;
+  57:message.c     **** 				}	
+  58:message.c     **** 			}
+  59:message.c     **** 		}
+  60:message.c     **** 		buffer_pos = 0;
+  61:message.c     **** 	}
+  62:message.c     **** 	return 0;
+  91               		.loc 1 62 0
+  92 0032 80E0      		ldi r24,0
+  93 0034 90E0      		ldi r25,0
+  94 0036 00C0      		rjmp .L3
+  95               	.LVL4:
+  96               	.L2:
+  14:message.c     **** 		request_buffer[buffer_pos] = readChar();	
+  97               		.loc 1 14 0
+  98 0038 0E94 0000 		call readChar
+  99               	.LVL5:
+ 100 003c 8983      		std Y+1,r24
+  15:message.c     **** 		if(request_buffer[buffer_pos] == BEGIN_MARK)
+ 101               		.loc 1 15 0
+ 102 003e 8B37      		cpi r24,lo8(123)
+ 103 0040 01F4      		brne .L4
+  17:message.c     **** 			writeChar(request_buffer[buffer_pos]);
+ 104               		.loc 1 17 0
+ 105 0042 0E94 0000 		call writeChar
+ 106               	.LVL6:
+  19:message.c     **** 			request_buffer[buffer_pos] = readChar();
+ 107               		.loc 1 19 0
+ 108 0046 0E94 0000 		call readChar
+ 109               	.LVL7:
+ 110 004a 8A83      		std Y+2,r24
+  22:message.c     **** 				writeChar(request_buffer[buffer_pos]);
+ 111               		.loc 1 22 0
+ 112 004c 0E94 0000 		call writeChar
+ 113               	.LVL8:
+ 114 0050 CE01      		movw r24,r28
+ 115 0052 0196      		adiw r24,1
+ 116 0054 6C01      		movw r12,r24
+ 117 0056 5E01      		movw r10,r28
+ 118 0058 93E0      		ldi r25,3
+ 119 005a A90E      		add r10,r25
+ 120 005c B11C      		adc r11,__zero_reg__
+  18:message.c     **** 			buffer_pos++;
+ 121               		.loc 1 18 0
+ 122 005e 01E0      		ldi r16,lo8(1)
+ 123 0060 10E0      		ldi r17,0
+ 124 0062 4601      		movw r8,r12
+ 125               	.LVL9:
+ 126               	.L5:
+  23:message.c     **** 				while(request_buffer[buffer_pos - 1] != END_MARK && 
+ 127               		.loc 1 23 0 discriminator 1
+ 128 0064 F601      		movw r30,r12
+ 129 0066 8191      		ld r24,Z+
+ 130 0068 6F01      		movw r12,r30
+ 131 006a 8D37      		cpi r24,lo8(125)
+ 132 006c 01F0      		breq .L13
+  26:message.c     **** 					buffer_pos++;
+ 133               		.loc 1 26 0
+ 134 006e 0F5F      		subi r16,-1
+ 135 0070 1F4F      		sbci r17,-1
+ 136               	.LVL10:
+  27:message.c     **** 					request_buffer[buffer_pos] = readChar();
+ 137               		.loc 1 27 0
+ 138 0072 0E94 0000 		call readChar
+ 139               	.LVL11:
+ 140 0076 F501      		movw r30,r10
+ 141 0078 8193      		st Z+,r24
+ 142 007a 5F01      		movw r10,r30
+  28:message.c     **** 					writeChar(request_buffer[buffer_pos]);
+ 143               		.loc 1 28 0
+ 144 007c 0E94 0000 		call writeChar
+ 145               	.LVL12:
+ 146 0080 00C0      		rjmp .L5
+ 147               	.L13:
+  30:message.c     **** 				if(request_buffer[0] == BEGIN_MARK &&
+ 148               		.loc 1 30 0
+ 149 0082 8981      		ldd r24,Y+1
+ 150 0084 8B37      		cpi r24,lo8(123)
+ 151 0086 01F4      		brne .L4
+  30:message.c     **** 				if(request_buffer[0] == BEGIN_MARK &&
+ 152               		.loc 1 30 0 is_stmt 0 discriminator 1
+ 153 0088 8A81      		ldd r24,Y+2
+ 154 008a 8B37      		cpi r24,lo8(123)
+ 155 008c 01F4      		brne .L4
+  32:message.c     **** 				   request_buffer[buffer_pos] == END_MARK &&
+ 156               		.loc 1 32 0 is_stmt 1
+ 157 008e F401      		movw r30,r8
+ 158 0090 E00F      		add r30,r16
+ 159 0092 F11F      		adc r31,r17
+  31:message.c     **** 				   request_buffer[1] == BEGIN_MARK &&
+ 160               		.loc 1 31 0
+ 161 0094 8081      		ld r24,Z
+ 162 0096 8D37      		cpi r24,lo8(125)
+ 163 0098 01F4      		brne .L4
+ 164               	.LBB2:
+  35:message.c     **** 					_message->action = request_buffer[2];
+ 165               		.loc 1 35 0
+ 166 009a 8B81      		ldd r24,Y+3
+ 167 009c F701      		movw r30,r14
+ 168 009e 8083      		st Z,r24
+ 169               	.LVL13:
+  38:message.c     **** 					if(buffer_pos == 7 &&
+ 170               		.loc 1 38 0
+ 171 00a0 0730      		cpi r16,7
+ 172 00a2 1105      		cpc r17,__zero_reg__
+ 173 00a4 01F4      		brne .L7
+  38:message.c     **** 					if(buffer_pos == 7 &&
+ 174               		.loc 1 38 0 is_stmt 0 discriminator 1
+ 175 00a6 8233      		cpi r24,lo8(50)
+ 176 00a8 01F4      		brne .L4
+  41:message.c     **** 						data = (request_buffer[3] - '0') * 100;
+ 177               		.loc 1 41 0 is_stmt 1
+ 178 00aa 8C81      		ldd r24,Y+4
+ 179 00ac 90E0      		ldi r25,0
+ 180 00ae C097      		sbiw r24,48
+ 181 00b0 24E6      		ldi r18,lo8(100)
+ 182 00b2 289F      		mul r18,r24
+ 183 00b4 8001      		movw r16,r0
+ 184 00b6 299F      		mul r18,r25
+ 185 00b8 100D      		add r17,r0
+ 186 00ba 1124      		clr __zero_reg__
+ 187               	.LVL14:
+  42:message.c     **** 						data += (request_buffer[4] - '0') * 10;
+ 188               		.loc 1 42 0
+ 189 00bc 8D81      		ldd r24,Y+5
+ 190 00be 90E0      		ldi r25,0
+ 191 00c0 C097      		sbiw r24,48
+ 192 00c2 4AE0      		ldi r20,lo8(10)
+ 193 00c4 489F      		mul r20,r24
+ 194 00c6 9001      		movw r18,r0
+ 195 00c8 499F      		mul r20,r25
+ 196 00ca 300D      		add r19,r0
+ 197 00cc 1124      		clr __zero_reg__
+ 198 00ce 020F      		add r16,r18
+ 199 00d0 131F      		adc r17,r19
+ 200               	.LVL15:
+  43:message.c     **** 						data += request_buffer[5] - '0';
+ 201               		.loc 1 43 0
+ 202 00d2 8E81      		ldd r24,Y+6
+ 203 00d4 90E0      		ldi r25,0
+ 204 00d6 C097      		sbiw r24,48
+ 205 00d8 080F      		add r16,r24
+ 206 00da 191F      		adc r17,r25
+ 207               	.LVL16:
+  44:message.c     **** 						_message->data = data;
+ 208               		.loc 1 44 0
+ 209 00dc 1283      		std Z+2,r17
+ 210 00de 0183      		std Z+1,r16
+  45:message.c     **** 						writeChar('\n');
+ 211               		.loc 1 45 0
+ 212 00e0 8AE0      		ldi r24,lo8(10)
+ 213 00e2 0E94 0000 		call writeChar
+ 214               	.LVL17:
+  46:message.c     **** 						writeChar(_message->action);
+ 215               		.loc 1 46 0
+ 216 00e6 F701      		movw r30,r14
+ 217 00e8 8081      		ld r24,Z
+ 218 00ea 0E94 0000 		call writeChar
+ 219               	.LVL18:
+  47:message.c     **** 						writeInteger(data, DEC);
+ 220               		.loc 1 47 0
+ 221 00ee 6AE0      		ldi r22,lo8(10)
+ 222 00f0 C801      		movw r24,r16
+ 223 00f2 0E94 0000 		call writeInteger
+ 224               	.LVL19:
+ 225 00f6 00C0      		rjmp .L11
+ 226               	.LVL20:
+ 227               	.L7:
+  50:message.c     **** 					else if(buffer_pos == (MIN_REQUEST_SIZE - 1) && _message->action != SET_HEIGHT)
+ 228               		.loc 1 50 0
+ 229 00f8 0430      		cpi r16,4
+ 230 00fa 1105      		cpc r17,__zero_reg__
+ 231 00fc 01F0      		breq .+2
+ 232 00fe 00C0      		rjmp .L4
+  50:message.c     **** 					else if(buffer_pos == (MIN_REQUEST_SIZE - 1) && _message->action != SET_HEIGHT)
+ 233               		.loc 1 50 0 is_stmt 0 discriminator 1
+ 234 0100 8233      		cpi r24,lo8(50)
+ 235 0102 01F4      		brne .+2
+ 236 0104 00C0      		rjmp .L4
+  52:message.c     **** 						writeChar('\n');
+ 237               		.loc 1 52 0 is_stmt 1
+ 238 0106 8AE0      		ldi r24,lo8(10)
+ 239 0108 0E94 0000 		call writeChar
+ 240               	.LVL21:
+  53:message.c     **** 						writeChar(_message->action);
+ 241               		.loc 1 53 0
+ 242 010c F701      		movw r30,r14
+ 243 010e 8081      		ld r24,Z
+ 244 0110 0E94 0000 		call writeChar
+ 245               	.LVL22:
+ 246               	.L11:
+  54:message.c     **** 						return 1;	
+ 247               		.loc 1 54 0
+ 248 0114 81E0      		ldi r24,lo8(1)
+ 249 0116 90E0      		ldi r25,0
+ 250               	.L3:
+ 251               	/* epilogue start */
+ 252               	.LBE2:
+  63:message.c     **** }
+ 253               		.loc 1 63 0
+ 254 0118 2896      		adiw r28,8
+ 255 011a 0FB6      		in __tmp_reg__,__SREG__
+ 256 011c F894      		cli
+ 257 011e DEBF      		out __SP_H__,r29
+ 258 0120 0FBE      		out __SREG__,__tmp_reg__
+ 259 0122 CDBF      		out __SP_L__,r28
+ 260 0124 DF91      		pop r29
+ 261 0126 CF91      		pop r28
+ 262 0128 1F91      		pop r17
+ 263 012a 0F91      		pop r16
+ 264 012c FF90      		pop r15
+ 265 012e EF90      		pop r14
+ 266               	.LVL23:
+ 267 0130 DF90      		pop r13
+ 268 0132 CF90      		pop r12
+ 269 0134 BF90      		pop r11
+ 270 0136 AF90      		pop r10
+ 271 0138 9F90      		pop r9
+ 272 013a 8F90      		pop r8
+ 273 013c 0895      		ret
+ 274               		.cfi_endproc
+ 275               	.LFE2:
+ 277               	.global	Write
+ 279               	Write:
+ 280               	.LFB3:
+  64:message.c     **** 
+  65:message.c     **** //--------------------Write-the-message-through-I2C---------------------
+  66:message.c     **** void Write(MESSAGE _message)
+  67:message.c     **** {
+ 281               		.loc 1 67 0
+ 282               		.cfi_startproc
+ 283               	.LVL24:
+ 284 013e 1F93      		push r17
+ 285               	.LCFI14:
+ 286               		.cfi_def_cfa_offset 3
+ 287               		.cfi_offset 17, -2
+ 288 0140 CF93      		push r28
+ 289               	.LCFI15:
+ 290               		.cfi_def_cfa_offset 4
+ 291               		.cfi_offset 28, -3
+ 292 0142 DF93      		push r29
+ 293               	.LCFI16:
+ 294               		.cfi_def_cfa_offset 5
+ 295               		.cfi_offset 29, -4
+ 296 0144 00D0      		rcall .
+ 297               	.LCFI17:
+ 298               		.cfi_def_cfa_offset 7
+ 299 0146 CDB7      		in r28,__SP_L__
+ 300 0148 DEB7      		in r29,__SP_H__
+ 301               	.LCFI18:
+ 302               		.cfi_def_cfa_register 28
+ 303               	/* prologue: function */
+ 304               	/* frame size = 2 */
+ 305               	/* stack size = 5 */
+ 306               	.L__stack_usage = 5
+ 307 014a 162F      		mov r17,r22
+ 308 014c 982F      		mov r25,r24
+ 309               	.LVL25:
+  68:message.c     **** 	writeChar(BEGIN_MARK);
+ 310               		.loc 1 68 0
+ 311 014e 8BE7      		ldi r24,lo8(123)
+ 312               	.LVL26:
+ 313 0150 7983      		std Y+1,r23
+ 314 0152 9A83      		std Y+2,r25
+ 315 0154 0E94 0000 		call writeChar
+ 316               	.LVL27:
+  69:message.c     **** 	writeChar(BEGIN_MARK);
+ 317               		.loc 1 69 0
+ 318 0158 8BE7      		ldi r24,lo8(123)
+ 319 015a 0E94 0000 		call writeChar
+ 320               	.LVL28:
+  70:message.c     **** 	writeChar(_message.action);
+ 321               		.loc 1 70 0
+ 322 015e 812F      		mov r24,r17
+ 323 0160 0E94 0000 		call writeChar
+ 324               	.LVL29:
+  71:message.c     **** 	if(_message.action == GET_HEIGHT)
+ 325               		.loc 1 71 0
+ 326 0164 7981      		ldd r23,Y+1
+ 327 0166 9A81      		ldd r25,Y+2
+ 328 0168 1133      		cpi r17,lo8(49)
+ 329 016a 01F4      		brne .L15
+  72:message.c     **** 	{
+  73:message.c     **** 		writeInteger(_message.data, DEC);
+ 330               		.loc 1 73 0
+ 331 016c 6AE0      		ldi r22,lo8(10)
+ 332 016e 872F      		mov r24,r23
+ 333 0170 0E94 0000 		call writeInteger
+ 334               	.LVL30:
+ 335               	.L15:
+  74:message.c     **** 	}
+  75:message.c     **** 	writeChar(END_MARK);
+ 336               		.loc 1 75 0
+ 337 0174 8DE7      		ldi r24,lo8(125)
+ 338 0176 0E94 0000 		call writeChar
+ 339               	.LVL31:
+  76:message.c     **** 	writeChar(END_MARK);
+ 340               		.loc 1 76 0
+ 341 017a 8DE7      		ldi r24,lo8(125)
+ 342               	/* epilogue start */
+  77:message.c     **** }
+ 343               		.loc 1 77 0
+ 344 017c 0F90      		pop __tmp_reg__
+ 345 017e 0F90      		pop __tmp_reg__
+ 346 0180 DF91      		pop r29
+ 347 0182 CF91      		pop r28
+ 348 0184 1F91      		pop r17
+ 349               	.LVL32:
+  76:message.c     **** 	writeChar(END_MARK);
+ 350               		.loc 1 76 0
+ 351 0186 0C94 0000 		jmp writeChar
+ 352               	.LVL33:
+ 353               		.cfi_endproc
+ 354               	.LFE3:
+ 356               	.Letext0:
+ 357               		.file 2 "/usr/lib/avr/include/stdint.h"
+ 358               		.file 3 "message.h"
+ 359               		.file 4 "./RP6Lib/RP6common/RP6uart.h"
+ 360               		.file 5 "action_enum.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 message.c
+     /tmp/ccwE8fgM.s:2      *ABS*:0000003e __SP_H__
+     /tmp/ccwE8fgM.s:3      *ABS*:0000003d __SP_L__
+     /tmp/ccwE8fgM.s:4      *ABS*:0000003f __SREG__
+     /tmp/ccwE8fgM.s:5      *ABS*:00000000 __tmp_reg__
+     /tmp/ccwE8fgM.s:6      *ABS*:00000001 __zero_reg__
+     /tmp/ccwE8fgM.s:12     .text:00000000 Read
+     /tmp/ccwE8fgM.s:279    .text:0000013e Write
+
+UNDEFINED SYMBOLS
+getBufferLength
+readChar
+writeChar
+writeInteger

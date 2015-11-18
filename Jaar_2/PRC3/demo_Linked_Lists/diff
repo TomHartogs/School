@@ -1,0 +1,13 @@
+Illustration Linked List Operations
+current nodelist: NULL
+current nodelist: 10 -> NULL
+current nodelist: 10 -> 20 -> NULL
+current nodelist: 10 -> 30 -> 20 -> NULL
+current nodelist: 10 -> 30 -> 20 -> 40 -> NULL
+deleted Node with value: 30
+current nodelist: 10 -> 20 -> 40 -> NULL
+
+deleting NodeList
+deleted Node with value: 10
+deleted Node with value: 20
+deleted Node with value: 40

@@ -1,0 +1,16 @@
+Create unity test:
+
+parameter_test.c
+
+#include "unity.h" (Add file in current directory)
+
+void test_swapValues(void)
+{
+	int a = 2;
+	int b = 3;
+	TEST_ASSERT_EQUAL(a == 2);
+	TEST_ASSERT_EQUAL(b == 3);
+	swapValues(*a, *b)
+	TEST_ASSERT_EQUAL(a == 3);
+	TEST_ASSERT_EQUAL(b == 2);
+}
