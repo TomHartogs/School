@@ -1,3 +1,9 @@
 [submodule "Jaar_2/PTT/RCS"]
 	path = Jaar_2/PTT/RCS
 	url = https://gitlab.com/davey/RCS.git
+[submodule "Jaar_2/ES3/EL/buildroot"]
+	path = Jaar_2/ES3/EL/buildroot
+	url = git://git.buildroot.net/buildroot
+[submodule "Jaar_1/ES22/rp6"]
+	path = Jaar_1/ES22/rp6
+	url = git://github.com/b3nzchr3ur/rp6
