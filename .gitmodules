@@ -7,3 +7,6 @@
 [submodule "Jaar_1/ES22/rp6"]
 	path = Jaar_1/ES22/rp6
 	url = git://github.com/b3nzchr3ur/rp6
+[submodule "Jaar_2/ES3/EL/FHICTbuildroot"]
+	path = Jaar_2/ES3/EL/FHICTbuildroot
+	url = https://github.com/fhict/el32-buildroot.git
