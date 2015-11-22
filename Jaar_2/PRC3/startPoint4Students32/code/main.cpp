@@ -17,9 +17,9 @@ int main()
     // sort all data
     // todo: your code here!
     Key current;
-    current.setNext(head.getNext);
-    if(current.getText() > current.getNext()->getText())
-		swap(current, current.getNext());
+    //current.setNext(head.getNext);
+    //if(current.getText() > current.getNext()->getText())
+	//	swap(current, current.getNext());
     
     // save sorted data into a new file called sorted.bin
     f.saveFile(head, "sorted.bin");
