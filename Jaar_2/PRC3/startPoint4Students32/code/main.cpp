@@ -3,10 +3,11 @@
 #include "FileStructure.h"
 #include "Key.h"
 
-Key* findSmallestAsHead(Key* smallest, Key* current)
+template <typename T>
+T* findSmallest(T* smallest, T* current)
 {
-	static Key* beforeSmallest;
-	static Key* previous;
+	static T* beforeSmallest;
+	static T* previous;
 	if(current == NULL)
 	{
 		beforeSmallest->setNext(smallest->getNext());
@@ -20,32 +21,31 @@ Key* findSmallestAsHead(Key* smallest, Key* current)
 			smallest = current;
 		}
 		previous = current;
-		return findSmallestAsHead(smallest, current->getNext());
+		return findSmallest(smallest, current->getNext());
 	}
 }
 
-bool sort(Key* current)
+template <typename T>
+void swapWithNextIfItsBigger(T* current, bool* somethingHasChanged)
 {
-	static bool somethingHasChanged;
-	static Key* previous;
-	if(current == NULL)
-	{
-		return somethingHasChanged;
-	}
-	else
+	static T* previous;
+	if(current->getNext() != NULL)
 	{
 		if(current->getText() > current->getNext()->getText())
 		{
-			Key* temp = current->getNext();
-			std::cout << current->getText() << std::endl;
-			previous->setNext(temp);
+			T* tempNext = current->getNext();
+			previous->setNext(tempNext);
 			current->setNext(current->getNext()->getNext());
-			temp->setNext(current);
-			previous = current;
-			somethingChanged = true;
+			tempNext->setNext(current);
+			previous = tempNext;
+			*somethingHasChanged = true;
 		}
-		previous = current;
-		return sort(current->getNext()->getNext());
+		else
+		{
+			previous = current;
+			current = current->getNext();
+		}
+		swapWithNextIfItsBigger(current, somethingHasChanged);
 	}
 }
 
@@ -54,21 +54,49 @@ int main()
 {
     FileStructure f;
     Key head;
-    
-    //print gibberish
+   
     f.loadFile("data/gibberish.bin", head);
-    
-    //print sorted
-	//f.loadFile("sorted.bin", head);
 	
     //head.print();
 
 	Key* newHead = &head;
-	newHead = findSmallestAsHead(&head, &head);
-	newHead->setNext(&head);
+	newHead = findSmallest(newHead, newHead);
+	newHead->setNext(&head);   
+    
+	bool somethingHasChanged = true;
+    while(somethingHasChanged)
+    {    
+		somethingHasChanged = false;
+		swapWithNextIfItsBigger(newHead, &somethingHasChanged);
+	}
 	
-	//Same as recursive solution above
-	/*Key* previous;
+	Key* current = newHead;
+	while(current != NULL)
+	{
+		Value* smallestValue = current->getValuePtr();
+		smallestValue = findSmallest(current->getValuePtr(), current->getValuePtr());
+		current->setValuePtr(smallestValue);
+		
+		somethingHasChanged = true;
+		while(somethingHasChanged)
+		{    
+			somethingHasChanged = false;
+			swapWithNextIfItsBigger(current->getValuePtr(), &somethingHasChanged);
+		}
+		
+		current = current->getNext();
+	}
+	
+    // save sorted data into a new file called sorted.bin
+    f.saveFile(*newHead, "sorted.bin");
+    
+    return 0;
+}
+
+//Functions before rewriting to recursive
+
+	/*Same as recursive solution above
+	Key* previous;
 	Key* current = &head;
 	Key* newHead = &head;
 	newHead->setText(head.getText());
@@ -85,44 +113,46 @@ int main()
 		previous = current;
 		current = current->getNext();
 	}
-    std::cout << newHead->getText() << std::endl;*/
-    
-    
+    std::cout << newHead->getText() << std::endl;
 
-    //while(sort(newHead))
    	Key* previous = newHead;
 	Key* current = newHead;
 	bool somethingChanged = true;
 	
-    while(somethingChanged)
-    {
+   while(somethingChanged)
+   {
 		somethingChanged = false;
 		while(current->getNext() != NULL)
 		{
 			if(current->getText() > current->getNext()->getText())
 			{	
-				Key* temp = current->getNext();
-				std::cout << current->getText() << std::endl;
-				previous->setNext(temp);
+				Key* tempNext = current->getNext();
+				std::cout << "Previous: " << previous->getText() << std::endl;
+				std::cout << "current: " << current->getText() << std::endl;
+				std::cout << "Next: " << tempNext->getText() << std::endl;
+				std::cout << std::endl;
+				previous->setNext(tempNext);
 				current->setNext(current->getNext()->getNext());
-				temp->setNext(current);
-				previous = current;
+				tempNext->setNext(current);
+				previous = tempNext;
 				somethingChanged = true;
 			}
 			else
 			{
 				previous = current;
 				current = current->getNext();
+				std::cout << "bigger text :" << current->getText() << std::endl;
 			}
 		}
+		std::cout << "Last key: " << current->getText() << std::endl;
 		previous = newHead;
 		current = newHead;
-		std::cout << "head: " << current->getText() << std::endl;
-		std::cout << "after head: " << current->getNext()->getText() << std::endl;
+		//std::cout << "head: " << current->getText() << std::endl;
+		//std::cout << "after head: " << current->getNext()->getText() << std::endl;
 	}
 	
     //Print new keylist
-    current = newHead;
+    Key* current = newHead;
     while(current != NULL)
     {
 		std::cout << current->getText() << std::endl;
@@ -130,45 +160,7 @@ int main()
 	}
     
     
-    /*Key* current = new Key();
+    Key* current = new Key();
     current->setNext(head.getNext());
     current->setText(head.getText());
-    
-    //Waarom mag dit wel maar Key* next, temp; next = new Key(); temp = new Key(); niet?
-    Key* next = new Key();
-    Key* temp = new Key();
-    next->setNext(current->getNext());
-    next->setText(next->getNext()->getText());
-    std::cout << "Head: " << head.getText() << std::endl;
-    std::cout << "Current: " << current->getText() << std::endl;
-    std::cout << "Next: " << next->getText() << std::endl;
-    if(current->getText() > next->getText())
-	{
-		std::cout << "swapping" << std::endl;
-		temp->setNext(head.getNext());
-		head.setNext(current->getNext());
-		current->setNext(next->getNext());
-		next->setNext(temp->getNext());
-	}
-	std::cout << "Head: " << head.getText() << std::endl;
-    std::cout << "Current: " << current->getText() << std::endl;
-    std::cout << "Next: " << next->getText() << std::endl;*/
-    //if(head.getText() > current->getText())
-		//swap head and current
-		
-	/*while(current->getText().length() == 2)
-	{
-		//std::cout << current->getText() << std::endl;
-		current->setNext(current->getNext()->getNext());
-		//current->setText(current->getNext()->getText());
-	}*/
-    //current.setNext(head.getNext());
-    //std::cout << current.getNext() << std::endl;
-    //if(current.getText() > current.getNext()->getText())
-	//	swap(current, current.getNext());
-    
-    // save sorted data into a new file called sorted.bin
-    //f.saveFile(*smallest->getNext(), "sorted.bin");
-    
-    return 0;
-}
+*/
