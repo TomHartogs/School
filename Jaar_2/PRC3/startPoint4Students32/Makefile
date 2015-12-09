@@ -14,12 +14,12 @@ CC=g++
 .phony: all clean
 
 sort: $(MAIN_OBJECTS) Makefile code/FileStructure.h
-	@$(CC) $(LDDFLAGS) $(MAIN_OBJECTS) -o $@
+	@$(CC) -pg $(LDDFLAGS) $(MAIN_OBJECTS) -o $@
 	
 all: sort
 
 .cpp.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(CC) -pg $(CFLAGS) $< -o $@
 
 clean:
 	@rm -rf sort code/*.o test/*.o *.bin

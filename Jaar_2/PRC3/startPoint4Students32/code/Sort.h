@@ -7,7 +7,10 @@ T* findSmallest(T* smallest, T* current)
 	static T* previous;
 	if(current == NULL)
 	{
-		beforeSmallest->setNext(smallest->getNext());
+		if(beforeSmallest != NULL)
+			beforeSmallest->setNext(smallest->getNext());
+		beforeSmallest = NULL;
+		previous = NULL;
 		return smallest;
 	}
 	else

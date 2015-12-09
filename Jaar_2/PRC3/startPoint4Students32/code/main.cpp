@@ -23,15 +23,12 @@ int main()
 	Key* current = head;
 	while(current != NULL)
 	{
-		/*Value* tempNext = current->getValuePtr();
-		current->setValuePtr(findSmallest(current->getValuePtr(), current->getValuePtr()));
-		if(current->getText() != tempNext->getText())
-			current->setValuePtr(tempNext);*/
-		
+		Value* temp = current->getValuePtr();
 		Value* smallestValue = current->getValuePtr();
 		smallestValue = findSmallest(current->getValuePtr(), current->getValuePtr());
+		if(temp != smallestValue)
+			smallestValue->setNext(temp);
 		current->setValuePtr(smallestValue);
-		
 		somethingHasChanged = true;
 		while(somethingHasChanged)
 		{    
@@ -43,7 +40,7 @@ int main()
 	}
 	
 	//f.saveFile(*head, "sorted.bin");
-	
+
 	delete head;
 	
     return 0;
