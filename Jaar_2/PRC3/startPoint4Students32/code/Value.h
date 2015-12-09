@@ -19,7 +19,7 @@ class Value
         Value* getNext();
         // post: pointer to next value is returned
 
-        void setNext(Value* value);
+        void setNext(Value* value);	
         // post: pointer to next value is set
 
         size_t getSize() const;
