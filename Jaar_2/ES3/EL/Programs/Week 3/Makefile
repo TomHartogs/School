@@ -10,7 +10,7 @@ TARGET = xbox360
 all: $(TARGET)
 
 $(TARGET) : $(OBJECTS) 
-	$(CXX) $(CFLAGS) -o $@  $^ $(LDFLAGS)
+	$(CXX) -o $@  $^ $(LDFLAGS) $(CFLAGS)
 
 install: $(TARGET)
 	scp $(TARGET) root@192.168.0.50:/home/School/

@@ -19,7 +19,7 @@ int main()
 	
 	xboxController.SetLeds(Rotating);
 	
-	xboxController.SetRumble(0, 0);
+	xboxController.SetRumble(100, 100);
 	
 	printf("\033[2J");
 	while(1)
