@@ -16,8 +16,26 @@ enum  STATE
 
 enum EVENT
 {
+  StartSchutting,
   Open,
   Close,
   Stop
 };
+
+enum SIDE
+{
+  left,
+  right
+};
+
+enum VALVE_STATE
+{};
+
+enum POS
+{
+  bottom,
+  middle,
+  top
+};
+
 

@@ -1,63 +1,86 @@
 #include "sluice.h"
+#include <QtCore/QCoreApplication>
 
-Sluice::Sluice(int portNumber, VALVETYPE type)
+Sluice::Sluice(int portNumber, DOOR_TYPE type)
 {  
-  bool debug = false;
+  bool debug = true;
   QString url = "ws://localhost:" + QString::number(portNumber);
-  sluiceCommunicator = new Client(QUrl(url), debug);
+  _sluiceCommunicator = new Client(QUrl(url), debug);
 
-  //TODO:
-  //
-  //Connect buttons
-  //
+  _water = new Water(_sluiceCommunicator);
 
-  sluiceDoors[0] = SluiceDoor(portNumber, type);
-  sluiceDoors[1] = SluiceDoor(portNumber, type);
+  switch(type)
+  {
+    case Normal:
+    {
+      _leftDoor = new NormalSluiceDoor(LEFT, _sluiceCommunicator);
+      _rightDoor = new NormalSluiceDoor(RIGHT, _sluiceCommunicator);
+      break;
+    }
+    case OneSecond:
+    {
+      _leftDoor = new OneSecondSluiceDoor(LEFT, _sluiceCommunicator);
+      _rightDoor = new OneSecondSluiceDoor(RIGHT, _sluiceCommunicator);
+      break;
+    }
+    case Damaged:
+      break;
+  }
+  connect(_water, SIGNAL(levelChanged(WATER_LEVEL)), _leftDoor, SLOT(waterLevelChanged(WATER_LEVEL)));
+  connect(_water, SIGNAL(levelChanged(WATER_LEVEL)), _rightDoor, SLOT(waterLevelChanged(WATER_LEVEL)));
+  connect(_leftDoor, SIGNAL(StartUpdating()), _water, SLOT(StartUpdating()));
+  connect(_leftDoor, SIGNAL(StopUpdating()), _water, SLOT(StopUpdating()));
+  connect(_rightDoor, SIGNAL(StartUpdating()), _water, SLOT(StartUpdating()));
+  connect(_rightDoor, SIGNAL(StopUpdating()), _water, SLOT(StopUpdating()));
 }
 
 Sluice::~Sluice()
 {
-  delete sluiceCommunicator;
+  delete _sluiceCommunicator;
+  delete _leftDoor;
+  delete _rightDoor;
 }
 
-void Sluice::OpenButtonPressed()
+void Sluice::Schut()
 {
-    HandleEvent(Open);
+  HandleEvent(Open);
 }
 
-void Sluice::CloseButtonPressed()
+void Sluice::HandleEvent(EVENT event)
 {
-    HandleEvent(Close);
-}
+  std::cout << "Sluice eventhandler: "<<  event << std::endl;
 
-void Sluice::StopButtonPressed()
-{
-    HandleEvent(Stop);
-}
-
-
-void Sluice::HandleEvent(EVENT evt)
-{
-    std::cout << "Sluice eventhandler: "<<  evt << std::endl;
-
-  switch (evt)
+  switch (event)
   {
     case Open:
       {
-        sluiceDoors[0].Openup();
-        sluiceDoors[1].Openup();
+        qDebug() << "Opening";
+        if(_water->GetWaterLevel() == high)
+        {
+          _rightDoor->Closeup();
+          while(_rightDoor->GetState() != doorClosed)
+          {
+            QCoreApplication::processEvents();
+          }
+          _leftDoor->Openup();
+        }
+        else
+        {
+          _leftDoor->Closeup();
+          while(_leftDoor->GetState() != doorClosed)
+          {
+            QCoreApplication::processEvents();
+          }
+          _rightDoor->Openup();
+        }
         break;
       }
     case Close:
       {
-        sluiceDoors[0].Closeup();
-        sluiceDoors[1].Closeup();
         break;
       }
     case Stop:
       {
-        sluiceDoors[0].StopActions();
-        sluiceDoors[1].StopActions();
         break;
       }
     default:

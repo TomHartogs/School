@@ -20,7 +20,7 @@
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[6];
-    char stringdata0[108];
+    char stringdata0[124];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -30,16 +30,17 @@ struct qt_meta_stringdata_MainWindow_t {
 static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
-QT_MOC_LITERAL(1, 11, 23), // "on_SchutSluice1_clicked"
-QT_MOC_LITERAL(2, 35, 0), // ""
-QT_MOC_LITERAL(3, 36, 23), // "on_SchutSluice3_clicked"
-QT_MOC_LITERAL(4, 60, 23), // "on_SchutSluice2_clicked"
-QT_MOC_LITERAL(5, 84, 23) // "on_SchutSluice4_clicked"
+QT_MOC_LITERAL(1, 11, 27), // "on_SchutBtnSluice_1_clicked"
+QT_MOC_LITERAL(2, 39, 0), // ""
+QT_MOC_LITERAL(3, 40, 27), // "on_SchutBtnSluice_2_clicked"
+QT_MOC_LITERAL(4, 68, 27), // "on_SchutBtnSluice_3_clicked"
+QT_MOC_LITERAL(5, 96, 27) // "on_SchutBtnSluice_4_clicked"
 
     },
-    "MainWindow\0on_SchutSluice1_clicked\0\0"
-    "on_SchutSluice3_clicked\0on_SchutSluice2_clicked\0"
-    "on_SchutSluice4_clicked"
+    "MainWindow\0on_SchutBtnSluice_1_clicked\0"
+    "\0on_SchutBtnSluice_2_clicked\0"
+    "on_SchutBtnSluice_3_clicked\0"
+    "on_SchutBtnSluice_4_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,10 +78,10 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_SchutSluice1_clicked(); break;
-        case 1: _t->on_SchutSluice3_clicked(); break;
-        case 2: _t->on_SchutSluice2_clicked(); break;
-        case 3: _t->on_SchutSluice4_clicked(); break;
+        case 0: _t->on_SchutBtnSluice_1_clicked(); break;
+        case 1: _t->on_SchutBtnSluice_2_clicked(); break;
+        case 2: _t->on_SchutBtnSluice_3_clicked(); break;
+        case 3: _t->on_SchutBtnSluice_4_clicked(); break;
         default: ;
         }
     }

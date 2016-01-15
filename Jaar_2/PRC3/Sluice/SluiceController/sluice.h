@@ -1,25 +1,31 @@
 #pragma once
 
 #include "client.h"
-#include "state_enum.h"
+#include "enum.h"
 #include "sluicedoor.h"
+#include "normalsluicedoor.h"
+#include "onesecondsluicedoor.h"
+#include "water.h"
 #include <iostream>
 
-class Sluice
+class Sluice: public QObject
 {
-public:
-  Sluice(int portNumber, VALVETYPE type);
-  ~Sluice();
-  void StopButtonPressed();
+  Q_OBJECT
 
-public slots:
-  void OpenButtonPressed();
-  void CloseButtonPressed();
-  void stopButtonPressed();
+public:
+  Sluice(int portNumber, DOOR_TYPE type);
+  ~Sluice();
+
+  void Schut();
+  void StopActions();
+  SLUICE_STATE GetState() { return _state; }
 
 private:
-  Client* sluiceCommunicator;
-  SluiceDoor sluiceDoors[2];
+  Client* _sluiceCommunicator;
+  SluiceDoor* _leftDoor;
+  SluiceDoor* _rightDoor;
+  SLUICE_STATE _state;
+  Water* _water;
 
-  void HandleEvent(EVENT evt);
+  void HandleEvent(EVENT state);
 };

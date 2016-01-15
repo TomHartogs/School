@@ -2,7 +2,7 @@ QT       += core websockets gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = echoclient
+TARGET = SluiceController
 CONFIG   += console
 CONFIG   -= app_bundle
 
@@ -13,20 +13,24 @@ SOURCES += \
     client.cpp \
     sluicedoor.cpp \
     sluice.cpp \
-    sluicevalve.cpp \
-    onesecondvalve.cpp \
     sluicecontroller.cpp \
-    mainwindow.cpp
+    valve.cpp \
+    normalvalve.cpp \
+    normalsluicedoor.cpp \
+    onesecondsluicedoor.cpp \
+    water.cpp
 
 HEADERS += \
     client.h \
     sluicedoor.h \
-    state_enum.h \
     sluice.h \
-    sluicevalve.h \
-    onesecondvalve.h \
     sluicecontroller.h \
-    mainwindow.h
+    valve.h \
+    normalvalve.h \
+    normalsluicedoor.h \
+    enum.h \
+    onesecondsluicedoor.h \
+    water.h
 
 DISTFILES +=
 

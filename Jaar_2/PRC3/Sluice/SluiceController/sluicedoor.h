@@ -1,27 +1,47 @@
 #pragma once
 
-#include "state_enum.h"
-#include "sluicevalve.h"
-#include "onesecondvalve.h"
+#include "enum.h"
+#include "valve.h"
+#include "normalvalve.h"
+#include "client.h"
 #include <iostream>
 #include <QObject>
+#include <QTimer>
 
-class SluiceDoor
+class SluiceDoor: public QObject
 {
+  Q_OBJECT
+
+  friend class NormalSluiceDoor;
+  friend class OneSecondSluiceDoor;
+
+public slots:
+    virtual void waterLevelChanged(WATER_LEVEL) = 0;
+
+signals:
+  void StartUpdating();
+  void StopUpdating();
+
 private:
-  STATE state;
-   SluiceValve* sluiceValves[3];
-   void HandleEvent(EVENT evt);
+  Valve* _bottom;
+  Valve* _middle;
+  Valve* _top;
+  Client* _sluiceCommunicator;
+  SIDE _side;
+  QString _startOfMessage;
+  WATER_LEVEL GetWaterLevel();
+  EVENT _rememberEvent;
+  void Unlock();
+  void Lock();
+  virtual void HandleEvent(EVENT event) = 0;
 
 public:
-  SluiceDoor();
-  SluiceDoor(int portNumber, VALVETYPE type);
-  ~SluiceDoor();
+  SluiceDoor(SIDE side, Client* clientPtr);
+  virtual ~SluiceDoor() = 0;
   void Openup();
   void Closeup();
   void StopActions();
-  STATE GetState();
-
-public slots:
-  void stopButtonPressed();
+  void ResumeActions();
+  DOOR_STATE GetState();
+  QString GetTrafficLight();
 };

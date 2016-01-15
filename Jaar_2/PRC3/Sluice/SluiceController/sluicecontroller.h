@@ -1,6 +1,7 @@
 #pragma once
 
 #include "sluice.h"
+#include <vector>
 #include <QObject>
 
 class SluiceController : public QObject
@@ -10,11 +11,9 @@ public:
   SluiceController();
   ~SluiceController();
   void StopButtonPressed();
-
-signals:
-  void stopButtonPressed();
+  void SchutSluice(int SluiceNumber);
 
 private:
-  Sluice* Sluices[3];
+  std::vector<Sluice*> Sluices;
 };
 

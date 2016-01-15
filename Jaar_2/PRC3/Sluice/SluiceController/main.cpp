@@ -35,14 +35,28 @@
 #include <QtCore/QCommandLineOption>
 #include <QApplication>
 
-#include "mainwindow.h"
+//#include "mainwindow.h"
+#include "sluicecontroller.h"
+#include <stdio.h>
+#include <iostream>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
 
-    MainWindow mainWindow;
-    mainWindow.show();
+    SluiceController _sluiceController;
+    _sluiceController.SchutSluice(0);
+    std::string str;
+    while(1)
+    {
+      a.processEvents();
+      //std::getline(std::cin, str);
+      //if(strcmp(str.c_str(), "open1") == 0)
+          //_sluiceController.SchutSluice(0);
+    }
+
+    //MainWindow mainWindow;
+    //mainWindow.show();
 
     return a.exec();
 }

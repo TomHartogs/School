@@ -1,99 +1,109 @@
 #include "sluicedoor.h"
 
-SluiceDoor::SluiceDoor()
-{
-  sluiceValves[0] = new SluiceValve(0000);
-  sluiceValves[1] = new SluiceValve(0000);
-  sluiceValves[2] = new SluiceValve(0000);
-}
+#include <stdio.h>
 
-SluiceDoor::SluiceDoor(int portNumber, VALVETYPE type)
+SluiceDoor::SluiceDoor(SIDE side, Client* clientPtr)
+  : _sluiceCommunicator(clientPtr), _side(side), _rememberEvent(Stop)
 {
-  if(type == Normal)
-  {
-    sluiceValves[0] = new SluiceValve(portNumber);
-    sluiceValves[1] = new SluiceValve(portNumber);
-    sluiceValves[2] = new SluiceValve(portNumber);
-  }
-  else if(type == OneSecond)
-  {
-      sluiceValves[0] = new OneSecondValve(portNumber);
-      sluiceValves[1] = new OneSecondValve(portNumber);
-      sluiceValves[2] = new OneSecondValve(portNumber);
-  }
-  //QObject::connect(sender, SIGNAL(stopButtonPressed()), this, SLOT(StopActions()));
+  _bottom = new NormalValve(_sluiceCommunicator, bottom, _side);
+  _middle = new NormalValve(_sluiceCommunicator, middle, _side);
+  _top = new NormalValve(_sluiceCommunicator, top, _side);
+
+  _startOfMessage = "SetDoor";
+  switch(_side)
+   {
+     case LEFT:
+        _startOfMessage += "Left";
+      break;
+     case RIGHT:
+        _startOfMessage += "Right";
+      break;
+   }
+  _startOfMessage += ":";
 }
 
 SluiceDoor::~SluiceDoor()
 {
-  delete sluiceValves[0];
-  delete sluiceValves[1];
-  delete sluiceValves[2];
+  delete _bottom;
+  delete _middle;
+  delete _top;
 }
-
-STATE SluiceDoor::GetState() { return state; }
 
 void SluiceDoor::Openup()
 {
-    HandleEvent(Open);
+  HandleEvent(Open);
 }
 
 void SluiceDoor::Closeup()
 {
-    HandleEvent(Close);
+  HandleEvent(Close);
 }
 
 void SluiceDoor::StopActions()
 {
-    HandleEvent(Stop);
+  HandleEvent(Stop);
 }
 
-void SluiceDoor::HandleEvent(EVENT evt)
+void SluiceDoor::ResumeActions()
 {
-    std::cout << "Door eventhandler: "<<  evt << std::endl;
+  HandleEvent(_rememberEvent);
+}
 
-  switch (state)
-  {
-    case Opened:
-      {
-        if (evt == Close)
-        {
-          sluiceValves[0]->Close();
-          sluiceValves[1]->Close();
-          sluiceValves[2]->Close();
-          state = Closing;
-        }
-        break;
-      }
-    case Closed:
-      {
-        if (evt == Open)
-        {
-            sluiceValves[0]->Open();
-            sluiceValves[1]->Open();
-            sluiceValves[2]->Open();
-            state = Opening;
-        }
-        break;
-      }
-    case Opening:
-      {
-        if (evt == Stop)
-        {
+void SluiceDoor::Unlock()
+{
+  QString sendMessage = _startOfMessage;
+  sendMessage.insert(7, "Lock");
+  sendMessage += "Off";
+  _sluiceCommunicator->sendMessage("SetDoorLockLeft:off");
+}
 
-        }
-        break;
-      }
-    case Closing:
-      {
-        if (evt == Stop)
-        {
+void SluiceDoor::Lock()
+{
+  QString sendMessage = _startOfMessage;
+  sendMessage.insert(7, "Lock");
+  sendMessage += "on";
+  _sluiceCommunicator->sendMessage(sendMessage);
+}
 
-        }
-        break;
-      }
-    default:
-      break;
-  }
+WATER_LEVEL SluiceDoor::GetWaterLevel()
+{
+  QString valveStatusRequest = "GetWaterLevel";
+  QString valveStatusReply = _sluiceCommunicator->sendMessage(valveStatusRequest);
+  if(QString::compare(valveStatusReply, "low", Qt::CaseSensitive) == 0)
+    return low;
+  else if(QString::compare(valveStatusReply, "belowValve2", Qt::CaseSensitive) == 0)
+    return belowValve2;
+  else if(QString::compare(valveStatusReply, "aboveValve2", Qt::CaseSensitive) == 0)
+    return aboveValve2;
+  else if(QString::compare(valveStatusReply, "aboveValve3", Qt::CaseSensitive) == 0)
+    return aboveValve3;
+  else if(QString::compare(valveStatusReply, "high", Qt::CaseSensitive) == 0)
+    return high;
+  else
+    return GetWaterLevel();
+}
 
+DOOR_STATE SluiceDoor::GetState()
+{
+  QString valveStatusRequest = _startOfMessage;
+  valveStatusRequest.remove(0, 1);
+  valveStatusRequest.remove(valveStatusRequest.size()-1, 1);
+  valveStatusRequest.prepend("G");
+  valveStatusRequest = _sluiceCommunicator->sendMessage(valveStatusRequest);
+  if(QString::compare(valveStatusRequest, "doorLocked", Qt::CaseSensitive) == 0)
+    return doorLocked;
+  else if(QString::compare(valveStatusRequest, "doorClosed", Qt::CaseSensitive) == 0)
+    return doorClosed;
+  else if(QString::compare(valveStatusRequest, "doorOpen", Qt::CaseSensitive) == 0)
+    return doorOpen;
+  else if(QString::compare(valveStatusRequest, "doorClosing", Qt::CaseSensitive) == 0)
+    return doorClosing;
+  else if(QString::compare(valveStatusRequest, "doorOpening", Qt::CaseSensitive) == 0)
+    return doorOpening;
+  else if(QString::compare(valveStatusRequest, "doorStopping", Qt::CaseSensitive) == 0)
+    return doorStopping;
+  else if(QString::compare(valveStatusRequest, "motorDamage", Qt::CaseSensitive) == 0)
+    return motorDamage;
+  else
+    return GetState();
 }

@@ -2,20 +2,25 @@
 
 SluiceController::SluiceController()
 {
-  Sluices[0] = new Sluice(5555, Normal);
-  Sluices[1] = new Sluice(5556, Normal);
-  Sluices[2] = new Sluice(5558, OneSecond);
+  Sluices.push_back(new Sluice(5555, Normal));
+  //Sluices.push_back(new Sluice(5556, Normal));
+  //Sluices.push_back(new Sluice(5557, Normal)); //Should be damaged
+  //Sluices.push_back(new Sluice(5558, OneSecond));
 }
 
 SluiceController::~SluiceController()
 {
-  delete Sluices[0];
-  delete Sluices[1];
-  delete Sluices[2];
+  for(int i = 0; i < Sluices.size(); i++)
+    delete Sluices[i];
+}
+
+void SluiceController::SchutSluice(int SluiceNumber)
+{
+   Sluices[SluiceNumber]->Schut();
 }
 
 void SluiceController::StopButtonPressed()
 {
-  emit stopButtonPressed();
+
 }
 

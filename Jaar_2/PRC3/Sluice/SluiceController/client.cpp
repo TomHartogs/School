@@ -5,7 +5,7 @@
 QT_USE_NAMESPACE
 
 Client::Client(const QUrl &url, bool debug, QObject *parent) :
-    QObject(parent), m_url(url), m_debug(debug), replyMessage("")
+    QObject(parent), noResponse(false), m_url(url), m_debug(debug), replyMessage("")
 {
   if (m_debug)
     qDebug() << "WebSocket server:" << url;
@@ -13,12 +13,13 @@ Client::Client(const QUrl &url, bool debug, QObject *parent) :
   connect(&m_webSocket, &QWebSocket::connected, this, &Client::onConnected);
   connect(&m_webSocket, &QWebSocket::disconnected, this, &Client::closed);
 
-  timer.start();
+  timer = new QElapsedTimer();
+  timer->start();
 
   m_webSocket.open(m_url);
   while(m_webSocket.state() != QAbstractSocket::ConnectedState)
   {
-      if(timer.elapsed() > timeOut)
+      if(timer->elapsed() > timeOut)
       {
         qDebug() << "Failed to connect";
         exit(EXIT_FAILURE);
@@ -34,13 +35,13 @@ Client::~Client()
 
 QString Client::sendMessage(QString message)
 {
-  timer.restart();
+  timer->restart();
 
   m_webSocket.sendTextMessage(message);
   replyMessage = "";
   while(replyMessage == "")
   {
-      if(timer.elapsed() > timeOut)
+      if(timer->elapsed() > timeOut)
         return "Response time-out";
     QCoreApplication::processEvents();
   }

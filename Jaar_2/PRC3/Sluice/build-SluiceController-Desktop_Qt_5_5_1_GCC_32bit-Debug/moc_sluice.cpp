@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'sluicecontroller.h'
+** Meta object code from reading C++ file 'sluice.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.5.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../SluiceController/sluicecontroller.h"
+#include "../SluiceController/sluice.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'sluicecontroller.h' doesn't include <QObject>."
+#error "The header file 'sluice.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.5.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,25 +18,25 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_SluiceController_t {
+struct qt_meta_stringdata_Sluice_t {
     QByteArrayData data[1];
-    char stringdata0[17];
+    char stringdata0[7];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_SluiceController_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_Sluice_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_SluiceController_t qt_meta_stringdata_SluiceController = {
+static const qt_meta_stringdata_Sluice_t qt_meta_stringdata_Sluice = {
     {
-QT_MOC_LITERAL(0, 0, 16) // "SluiceController"
+QT_MOC_LITERAL(0, 0, 6) // "Sluice"
 
     },
-    "SluiceController"
+    "Sluice"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_SluiceController[] = {
+static const uint qt_meta_data_Sluice[] = {
 
  // content:
        7,       // revision
@@ -52,7 +52,7 @@ static const uint qt_meta_data_SluiceController[] = {
        0        // eod
 };
 
-void SluiceController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Sluice::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -60,26 +60,26 @@ void SluiceController::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
     Q_UNUSED(_a);
 }
 
-const QMetaObject SluiceController::staticMetaObject = {
-    { &QObject::staticMetaObject, qt_meta_stringdata_SluiceController.data,
-      qt_meta_data_SluiceController,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject Sluice::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_Sluice.data,
+      qt_meta_data_Sluice,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *SluiceController::metaObject() const
+const QMetaObject *Sluice::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *SluiceController::qt_metacast(const char *_clname)
+void *Sluice::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_SluiceController.stringdata0))
-        return static_cast<void*>(const_cast< SluiceController*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_Sluice.stringdata0))
+        return static_cast<void*>(const_cast< Sluice*>(this));
     return QObject::qt_metacast(_clname);
 }
 
-int SluiceController::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Sluice::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QObject::qt_metacall(_c, _id, _a);
     if (_id < 0)

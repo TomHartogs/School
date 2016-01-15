@@ -16,13 +16,13 @@ public:
   ~MainWindow();
 
 private slots:
-  void on_SchutSluice1_clicked();
+  void on_SchutBtnSluice_1_clicked();
 
-  void on_SchutSluice3_clicked();
+  void on_SchutBtnSluice_2_clicked();
 
-  void on_SchutSluice2_clicked();
+  void on_SchutBtnSluice_3_clicked();
 
-  void on_SchutSluice4_clicked();
+  void on_SchutBtnSluice_4_clicked();
 
 private:
   Ui::MainWindow *ui;
