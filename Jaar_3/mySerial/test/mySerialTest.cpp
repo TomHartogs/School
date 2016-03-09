@@ -6,134 +6,67 @@
 
 #include "mySerial.cpp"
 
-TEST(foo, bla)
+TEST(Check_parity, check_get_parity_bit)
 {
-	ASSERT_EQ(1, 1);
+	mySerial _serial(1000);
+    ASSERT_EQ(0, _serial.GetParityBit(Even, 3));
+    ASSERT_EQ(1, _serial.GetParityBit(Even, 1));
+    ASSERT_EQ(0, _serial.GetParityBit(Odd, 1));
+    ASSERT_EQ(1, _serial.GetParityBit(Odd, 3));
 }
 
-/*
-using ::testing::Return;
-
-TEST(RentalAdministrationAdd, test_add_car_to_empty_administration)
+TEST(CheckAddByteToSendQueue, AddByteOne)
 {
-    RentalAdministration admin;
-    Car car;
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return("fh-01-ict"));
-    EXPECT_TRUE(admin.Add(&car));
+	mySerial _serial(1000);
+	_serial.AddByteToSendQueue(1);
+	bool* addedByte = _serial._sendQueue.pop();
+	ASSERT_EQ(1, addedByte[0]); // check for start bit
+	ASSERT_EQ(1, addedByte[1]); // first bit
+	ASSERT_EQ(0, addedByte[2]);
+	ASSERT_EQ(0, addedByte[3]);
+	ASSERT_EQ(0, addedByte[4]);
+	ASSERT_EQ(0, addedByte[5]);
+	ASSERT_EQ(0, addedByte[6]);
+	ASSERT_EQ(0, addedByte[7]);
+	ASSERT_EQ(0, addedByte[8]);
+	ASSERT_EQ(1, addedByte[9]); // parity bit (parity even)
+	ASSERT_EQ(0, addedByte[10]);
 }
 
-TEST(RentalAdministrationAdd, test_add_car_to_existing_administration)
+TEST(CheckAddByteToSendQueue, AddByteH)
 {
-    RentalAdministration admin;
-    Car car;
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return("fh-01-ict"));
-    EXPECT_TRUE(admin.Add(&car));
-
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return("fh-02-ict")).WillOnce(Return("fh-01-ict"));
-    EXPECT_TRUE(admin.Add(&car));
+	mySerial _serial(1000);
+	_serial.AddByteToSendQueue('h');
+	bool* addedByte = _serial._sendQueue.pop();
+	ASSERT_EQ(1, addedByte[0]); // check for start bit
+	ASSERT_EQ(0, addedByte[1]);
+	ASSERT_EQ(0, addedByte[2]);
+	ASSERT_EQ(0, addedByte[3]);
+	ASSERT_EQ(1, addedByte[4]);
+	ASSERT_EQ(0, addedByte[5]);
+	ASSERT_EQ(1, addedByte[6]);
+	ASSERT_EQ(1, addedByte[7]);
+	ASSERT_EQ(0, addedByte[8]);
+	ASSERT_EQ(1, addedByte[9]); // parity bit (parity even)
+	ASSERT_EQ(0, addedByte[10]);
 }
 
-TEST(RentalAdministrationAdd, test_add_existing_car_to_administration)
+/*Waarom werkt dit testen niet??
+TEST(SendFunction, send_letter_h)
 {
-    RentalAdministration admin;
-    Car car;
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return("fh-01-ict"));
-    EXPECT_TRUE(admin.Add(&car));
-
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return("fh-01-ict")).WillOnce(Return("fh-01-ict"));
-    EXPECT_FALSE(admin.Add(&car));
-}
-
-TEST(RentalEmptyAdministration, test_rent_car_in_empty_administration)
-{
-    RentalAdministration admin;
-    EXPECT_THROW(admin.RentCar("0987"), out_of_range);
-}
-
-TEST(RentalEmptyAdministration, test_return_car_in_empty_administration)
-{
-    RentalAdministration admin;
-    EXPECT_THROW(admin.ReturnCar("6543", 12), out_of_range);
-}
-
-TEST(RentalEmptyAdministration, test_clean_car_in_empty_administration)
-{
-    RentalAdministration admin;
-    EXPECT_THROW(admin.CleanCar("6543"), out_of_range);
-}
-
-TEST(RentalEmptyAdministration, test_get_car_in_empty_administration)
-{
-    RentalAdministration admin;
-    EXPECT_EQ(0, admin.GetCars().size());
-}
-
-class AdminTest : public ::testing::Test
-{
-    protected:
-        AdminTest()
-        {
-            licencePlates[0] = "abcd";
-            licencePlates[1] = "efgh";
-            // Add car with licencePlate "abcd" and car with licencePlate "efgh"
-            EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return(licencePlates[0])) // first add
-                                               .WillOnce(Return(licencePlates[1])) // second value to add
-                                               .WillOnce(Return(licencePlates[0])); // to check if second value already exist
-            EXPECT_TRUE(admin.Add(&car));
-            EXPECT_TRUE(admin.Add(&car));
-            EXPECT_EQ(2, admin.GetCars().size());
-        }
-        
-        RentalAdministration admin;
-        Car car;
-        string licencePlates[2];
-};
-
-TEST_F(AdminTest, test_rent_non_existing_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillRepeatedly(Return("aa-11-bb"));
-    EXPECT_THROW(admin.RentCar(licencePlates[0]), out_of_range);
-}
-
-TEST_F(AdminTest, test_rent_existing_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return(licencePlates[0]));
-    EXPECT_CALL(car, Rent()).WillOnce(Return(true));
-    EXPECT_EQ(true, admin.RentCar(licencePlates[0]));
-}
-
-TEST_F(AdminTest, test_rent_existing_but_already_rented_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return(licencePlates[0]));
-    EXPECT_CALL(car, Rent()).WillOnce(Return(false));
-    EXPECT_EQ(false, admin.RentCar(licencePlates[0]));
-}
-
-TEST_F(AdminTest, test_return_non_existng_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillRepeatedly(Return("aa-11-bb"));
-    EXPECT_THROW(admin.ReturnCar(licencePlates[0], 12), out_of_range);
-}
-
-TEST_F(AdminTest, test_return_existng_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return(licencePlates[0]));
-    EXPECT_CALL(car, Return(12)).WillOnce(Return(100));
-    EXPECT_EQ(100, admin.ReturnCar(licencePlates[0], 12));
-}
-
-TEST_F(AdminTest, test_clean_non_existing_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillRepeatedly(Return("aa-11-bb"));
-    EXPECT_THROW(admin.CleanCar(licencePlates[0]), out_of_range);
-}
-
-TEST_F(AdminTest, test_clean_existing_car)
-{
-    EXPECT_CALL(car, GetLicencePlate()).WillOnce(Return(licencePlates[0]));
-    EXPECT_CALL(car, Clean()).Times(1);
-    EXPECT_NO_THROW(admin.CleanCar(licencePlates[0]));
-}
-*/
-
-
+	mySerial _serial(1000);
+	const char* temp = "h";
+	_serial.Send(temp, 1);
+	bool* addedByte = _serial._sendQueue.pop();
+	ASSERT_EQ(1, addedByte[0]); // check for start bit
+	ASSERT_EQ(0, addedByte[1]);
+	ASSERT_EQ(0, addedByte[2]);
+	ASSERT_EQ(0, addedByte[3]);
+	ASSERT_EQ(1, addedByte[4]);
+	ASSERT_EQ(0, addedByte[5]);
+	ASSERT_EQ(1, addedByte[6]);
+	ASSERT_EQ(1, addedByte[7]);
+	ASSERT_EQ(0, addedByte[8]);
+	ASSERT_EQ(1, addedByte[9]); // parity bit (parity even)
+	ASSERT_EQ(0, addedByte[10]);
+}*/
