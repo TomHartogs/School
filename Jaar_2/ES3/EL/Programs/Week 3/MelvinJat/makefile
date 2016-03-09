@@ -9,7 +9,9 @@ TARGET = xboxcontroller
 all: $(TARGET)
 
 install: $(TARGET)
-	scp $(TARGET) root@10.0.0.42:/root
+	scp $(TARGET) root@192.168.0.50:/home/School
+	clear
+	ssh root@192.168.0.50 -t /home/School/$(TARGET)
 
 $(TARGET) : $(SOURCES) 
 	$(CC) $(CFLAGS) -o $@  $^ $(LDFLAGS)

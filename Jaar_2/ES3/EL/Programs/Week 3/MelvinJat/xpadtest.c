@@ -15,14 +15,13 @@
 
 int main(int argc, char *argv[])
 {
-	XboxController xbox;	
+	//XboxController xbox;	
 	libusb_device_handle *h;
-	int error;
-	int transferred;
+	//int error;
+	//int transferred;
 	int interface = 1;
 	int keralcheck;
-	unsigned char xboxImput[20];
-	
+	//unsigned char xboxImput[20];
 	//Init usblib opens it and check interface and claims it.
 	libusb_init(NULL);
 	h = libusb_open_device_with_vid_pid(NULL, 0x045e, 0x028e);
@@ -39,26 +38,11 @@ int main(int argc, char *argv[])
 	}
 	
 	//Gets info and writes to the motors with the LT and RT.
-	while(1)
-	{
-		error = libusb_interrupt_transfer(h, 0x81, xboxImput, sizeof(xboxImput), &transferred, 0);
-		if (error != 0) 
-		{
-			fprintf(stderr, "Transfer failed: %d\n", error);
-			return (1);
-		}
-		xboxinfo(xboxImput, &xbox);
-		printdemo(&xbox);
-		SetMotors(xbox.LeftTrigger, xbox.RightTrigger, h);
-		if(xbox.ButtonA > 0)
-		{
-			SetLeds(0x01, h);
-		}
-		else if(xbox.ButtonB > 0)
-		{
-			SetLeds(0x0a, h);
-		}
-	}
+	
+	int tempint = 0;
+	unsigned char data[] = { 1, 3, 0x0a };
+	libusb_interrupt_transfer(h, 0x01, data, sizeof data, &tempint, 0);
+	
 	return (0);
 }
 
@@ -128,32 +112,6 @@ void xboxinfo(unsigned char data[20], XboxController* xbox)
 	xbox->LeftStickYaxis = (data[9] << 8) | data[8];
 	xbox->RightStickXaxis = (data[11] << 8) | data[10];
 	xbox->RightStickYaxis = (data[13] << 8) | data[12];
-	
-	/*
-	xbox->type = (uint8_t)data[0];
-	xbox->size = (uint8_t)data[1];
-	xbox->dPadUp = (uint8_t)((data[2] << 7) >> 7);
-	xbox->dPadDown = (uint8_t)((data[2] << 6) >>7);
-	xbox->dPadLeft = (uint8_t)((data[2] << 5)  >> 7);
-	xbox->dPadRight = (uint8_t)((data[2] << 4) >> 7);
-	xbox->StartBut = (uint8_t)((data[2] << 3)>> 7);
-	xbox->BackBut = (uint8_t)((data[2] << 2) >> 7);
-	xbox->LeftStickPress = (uint8_t)((data[2] << 1) >> 7);
-	xbox->RightStickPress = (uint8_t)(data[2] >> 7);
-	xbox->ButtonLB = (uint8_t)((data[3] << 7) >> 7);
-	xbox->ButtonRB = (uint8_t)((data[3] << 6) >> 7);
-	xbox->LogoButton = (uint8_t)((data[3] << 5) >> 7);
-	xbox->ButtonA = (uint8_t)((data[3] << 3) >> 7);
-	xbox->ButtonB = (uint8_t)((data[3] << 2) >> 7);
-	xbox->ButtonX = (uint8_t)((data[3] << 1) >> 7);
-	xbox->ButtonY = (uint8_t)(data[3] >> 7);
-	xbox->LeftTrigger = (uint8_t)data[4];
-	xbox->RightTrigger = (uint8_t)data[5];
-	xbox->LeftStickXaxis = (((int16_t)data[6]) + ((int16_t)data[7]));
-	xbox->LeftStickYaxis = (((int16_t)data[8]) + ((int16_t)data[9]));
-	xbox->RightStickXaxis = (((int16_t)data[10]) + ((int16_t)data[11]));
-	xbox->RightStickYaxis = (((int16_t)data[12]) + ((int16_t)data[13]));
-	*/
 }
 
 

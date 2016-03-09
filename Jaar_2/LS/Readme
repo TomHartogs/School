@@ -1,0 +1,21 @@
+Moodboard Tagreader
+===================
+
+Program for reading and saving the tags
+
+
+Setup
+-----
+- Install the phidget libraries by following their directions. http://www.phidgets.com/docs/Operating_System_Support
+- Edit the first lines of code underneath the includes in such a way that the RFID serial number matches the corresponding emotion.
+- Compile the code using your choose of C++ compiler.
+- Run the code as administrator
+
+Using the program
+-----------------
+- Wait until the program has detected all 3 scanners.
+- Press "enter" to start scanning.
+- First scan a teacher tag.
+- Start scanning all other tags.
+- Scan the teacher tag again to quit the program and save the tags in "scannedTags.txt". 
+

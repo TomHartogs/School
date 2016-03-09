@@ -1,8 +1,6 @@
 #include "Led.h"
 #include <iostream>
 
-
-
 Led::Led(int pin)
 {
     state = LedStateOff;

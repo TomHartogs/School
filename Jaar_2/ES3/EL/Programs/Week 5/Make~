@@ -1,0 +1,20 @@
+CXX = arm-linux-g++
+CFLAGS = -O2 -Wall -Werror
+LDFLAGS = -lusb-1.0 -lrt
+SOURCES = CopyPasteFound.c
+OBJECTS = $(SOURCES:.c=.o)
+TARGET = CopyPasteFound
+
+.PHONY: all clean install
+
+all: $(TARGET)
+
+$(TARGET) : $(OBJECTS) 
+	$(CXX) -o $@  $^ $(LDFLAGS) $(CFLAGS)
+
+install: $(TARGET)
+	scp $(TARGET) root@192.168.0.50:/home/School/
+
+clean:
+	@rm -rf $(TARGET) $(OBJECTS)
+
